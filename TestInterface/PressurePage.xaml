@@ -4,15 +4,36 @@
     xmlns:local="using:TestInterface"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:Charts="using:Syncfusion.UI.Xaml.Charts"
+    xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
+    xmlns:navigation="using:Syncfusion.UI.Xaml.Controls.Layout"
+    xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.UWP"
     x:Class="TestInterface.PressurePage"
     mc:Ignorable="d">
 
     <Grid Background="Black" HorizontalAlignment="Left" Width="800" Height="480" VerticalAlignment="Top">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <chart:SfChart x:Name="sfchart" Margin="10,10,10,75" AreaBorderThickness="0,0.5,0.5,0" Palette="Metro">
+            <chart:SfChart.Header>
+                <TextBlock Text="Pressure" FontSize="20" Foreground="White"/>
+            </chart:SfChart.Header>
+
+
+
+            <chart:SfChart.PrimaryAxis>
+                <chart:NumericalAxis Header="DTReading" FontSize="15" Foreground="White"/>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis Header="Pressure" FontSize="15" Foreground="White"/>
+            </chart:SfChart.SecondaryAxis>
+
+            <chart:FastLineSeries XBindingPath="DTReading" YBindingPath="Pressure" Label="Pressure Reading">
+                <chart:FastLineSeries.Trendlines>
+                    <chart:Trendline Stroke="White" Type="Polynomial" PolynomialOrder="4" />
+                </chart:FastLineSeries.Trendlines>
+            </chart:FastLineSeries>
+        </chart:SfChart>
         <Button x:Name="btnDisplayGraph" Margin="125,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
             <TextBlock TextWrapping="Wrap">Display Graph</TextBlock>
         </Button>
@@ -21,50 +42,6 @@
         <Button x:Name="btnCurrentPress" Margin="10,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
             <TextBlock TextWrapping="Wrap">Initializing Pressure Reading</TextBlock>
         </Button>
-        <StackPanel Height="480" VerticalAlignment="Top" >
-            <Charting:Chart x:Name="PressChart" Height="310" Margin="10,10,10,0" BorderBrush="White" Foreground="White">
-
-                <Charting:LineSeries Title="" Margin="0" IndependentValuePath="DTReading" DependentValuePath="Pressure" IsSelectionEnabled="False" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False" >
-                    <Charting:LineSeries.TransitionEasingFunction>
-                        <BounceEase EasingMode="EaseInOut" />
-
-                    </Charting:LineSeries.TransitionEasingFunction>
-                </Charting:LineSeries>
-                <Charting:Chart.Palette>
-                    <Charting:ResourceDictionaryCollection>
-                        <!-- Red -->
-                        <ResourceDictionary>
-                            <SolidColorBrush
-            x:Key="Background"
-            Color="#FFFFFFFF" />
-                            <Style
-            x:Key="DataPointStyle"
-            TargetType="Control">
-                                <Setter
-                Property="Background"
-                Value="{StaticResource Background}" />
-                            </Style>
-                            <Style
-            x:Key="DataShapeStyle"
-            TargetType="Shape">
-                                <Setter
-                Property="Stroke"
-                Value="{StaticResource Background}" />
-                                <Setter
-                Property="StrokeThickness"
-                Value="2" />
-                                <Setter
-                Property="StrokeMiterLimit"
-                Value="1" />
-                                <Setter
-                Property="Fill"
-                Value="{StaticResource Background}" />
-                            </Style>
-
-                        </ResourceDictionary>
-                    </Charting:ResourceDictionaryCollection>
-                </Charting:Chart.Palette>
-            </Charting:Chart>
-        </StackPanel>
+       
     </Grid>
 </Page>

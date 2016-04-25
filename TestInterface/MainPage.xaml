@@ -91,7 +91,7 @@
         <Button x:Name="btnStatus" Margin="565,0,0,9" VerticalAlignment="Bottom" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" BorderBrush="{x:Null}" Click="btnStatus_Click">
             <TextBlock TextWrapping="Wrap">Report Control and Status</TextBlock>
         </Button>
-        <Button x:Name="btnMCounter" Margin="680,140,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnMCounter_Click" Loaded="onLoadMCounter">
+        <Button x:Name="btnMCounter" Margin="680,140,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Loaded="onLoadMCounter" Click="btnMCounterClick">
             <TextBlock TextWrapping="Wrap">Initializing Usage Control</TextBlock>
         </Button>
         <ProgressBar x:Name="ProgBarforStatus" HorizontalAlignment="Left" Height="50" Margin="275,420,0,0" VerticalAlignment="Top" Width="260" Value="42" BorderBrush="#FF68217A" Loaded="barOnLoad" Background="#FF68217A">
@@ -102,7 +102,7 @@
                 </LinearGradientBrush>
             </ProgressBar.Foreground>
         </ProgressBar>
-        <ListView Name="ListViewTest" HorizontalAlignment="Center" Width="525" Height="220" VerticalAlignment="Top" Foreground="White" Margin="10,195,265,0" Loaded="onLoadList" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.ZoomMode="Enabled" SelectionMode="None" IsSwipeEnabled="False" HorizontalContentAlignment="Stretch" IsMultiSelectCheckBoxEnabled="False">
+        <ListView Name="ListViewTest" HorizontalAlignment="Center" Width="525" Height="220" VerticalAlignment="Top" Foreground="White" Margin="10,195,265,0" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.ZoomMode="Enabled" SelectionMode="None" IsSwipeEnabled="False" HorizontalContentAlignment="Stretch" IsMultiSelectCheckBoxEnabled="False" Loaded="onLoadList">
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <Grid Width="Auto" VerticalAlignment="Center" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.ZoomMode="Enabled" FlowDirection="LeftToRight" Padding="1" BorderThickness="0,1,0,1" BorderBrush="White">
@@ -120,7 +120,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <TextBlock x:Name="textBlock1" Text="IDUN" HorizontalAlignment="Left" Height="145" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="525" Foreground="White" SelectionHighlightColor="{x:Null}" TextAlignment="Center" FontSize="120" FontWeight="Bold" CharacterSpacing="406"></TextBlock>
-        <Button x:Name="button" Content="Catching Service Calls" HorizontalAlignment="Left" Height="50" Margin="10,420,0,0" VerticalAlignment="Top" Width="260" Foreground="White" Background="#FF68217A" BorderBrush="{x:Null}" FontWeight="Bold" Loaded="button_Loaded"/>
+        <Button x:Name="button" Content="Catching Service Calls" HorizontalAlignment="Left" Height="50" Margin="10,420,0,0" VerticalAlignment="Top" Width="260" Foreground="White" Background="#FF68217A" BorderBrush="{x:Null}" FontWeight="Bold" Loaded="onLoadSCall" />
         <Button x:Name="btnAAS" HorizontalAlignment="Left" Height="125" Margin="680,346,0,0" VerticalAlignment="Top" Width="110" Background="#FF68217A" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" Click="btnAAS_Click" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False">
             <TextBlock TextWrapping="Wrap">Additional Applications Access</TextBlock>
         </Button>

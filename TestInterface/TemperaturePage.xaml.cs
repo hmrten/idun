@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.UI.Xaml.Charts;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -17,7 +18,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
-using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -37,18 +37,15 @@ namespace TestInterface
         {
             this.InitializeComponent();
 
-            TempChart.LegendItems.Clear();
-
             TempUnit = "°C";
 
-            (Application.Current as TestInterface.App).TempCallbacks += TempCallback;
+            (Application.Current as TestInterface.App).tempRead.CollectionChanged += TempRead_CollectionChanged;
 
         }
 
-        private void TempCallback(float temp)
+        private void TempRead_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-           ConvertedTemp = temp;
-           btnCurrentTemp.Content = string.Format("Temperature:\n{0:f2} "+ TempUnit, ConvertedTemp);
+            btnCurrentTemp.Content = string.Format("Temperature:\n{0:f2} " + TempUnit, (Application.Current as TestInterface.App).tempRead.Last());
 
             //Self-truncating Stack List
             if (TempNdTime.Count >= 15)
@@ -56,10 +53,14 @@ namespace TestInterface
                 TempNdTime.Dequeue();
 
             }
-            TempNdTime.Enqueue(new TempControl { Temperature = ConvertedTemp, DTReading =DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
+            
+            TempNdTime.Enqueue(new TempControl { Temperature = double.Parse((Application.Current as TestInterface.App).tempRead.Last().ToString()), DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
 
-            (TempChart.Series[0] as LineSeries).ItemsSource = TempNdTime.ToList();
+            (sfchart.Series[0] as FastLineSeries).ItemsSource = TempNdTime.ToList();
+
         }
+
+
 
         private void btnBACK_Click(object sender, RoutedEventArgs e)
         {

@@ -4,12 +4,40 @@
     xmlns:local="using:TestInterface"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    xmlns:Charts="using:Syncfusion.UI.Xaml.Charts"
+    xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
+    xmlns:navigation="using:Syncfusion.UI.Xaml.Controls.Layout"
+    xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.UWP"
     x:Class="TestInterface.HumidityPage"
+
     mc:Ignorable="d">
 
     <Grid Background="Black" Height="480" VerticalAlignment="Top" HorizontalAlignment="Left" Width="800">
+
+
+
+        <chart:SfChart x:Name="sfchart" Margin="10,10,10,75" AreaBorderThickness="0,0.5,0.5,0" Palette="Metro">
+            <chart:SfChart.Header>
+                <TextBlock Text="Humidity" FontSize="20" Foreground="White"/>
+            </chart:SfChart.Header>
+
+
+
+            <chart:SfChart.PrimaryAxis>
+                <chart:NumericalAxis Header="DTReading" FontSize="15" Foreground="White"/>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis Header="Humidity" FontSize="15" Foreground="White"/>
+            </chart:SfChart.SecondaryAxis>
+
+            <chart:FastLineSeries XBindingPath="DTReading" YBindingPath="Humidity" Label="Humidity Reading">
+                <chart:FastLineSeries.Trendlines>
+                    <chart:Trendline Stroke="White" Type="Polynomial" PolynomialOrder="4" />
+                </chart:FastLineSeries.Trendlines>
+            </chart:FastLineSeries>
+        </chart:SfChart>
         <Button x:Name="btnDisplayGraph" Margin="240,344,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}">
             <TextBlock TextWrapping="Wrap" Text="Display Graph" FontSize="14"/>
         </Button>
@@ -18,49 +46,11 @@
         </Button>
         <Button x:Name="btnBACK" Content="Return" Margin="680,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnBACK_Click" FontSize="14"/>
         <Button x:Name="btnCurrentHumi" Margin="10,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}">
-            <TextBlock TextWrapping="Wrap" FontSize="14">Initializing Humidity Reading</TextBlock>
+            <TextBlock TextWrapping="Wrap" FontSize="14">
+        		<Run Text="Initializing Humidity Reading"/>
+            </TextBlock>
         </Button>
-        <StackPanel Margin="0,2,0,0" >
-            <Charting:Chart x:Name="HumChart" Height="310" Margin="10,10,10,0" BorderBrush="White" Foreground="White">
-                <Charting:Chart.Palette>
-                    <Charting:ResourceDictionaryCollection>
-                        <ResourceDictionary>
-                            <SolidColorBrush
-        						x:Key="Background"
-        						Color="#FFFFFFFF" />
-                            <Style
-        						x:Key="DataPointStyle"
-        						TargetType="Control">
-                                <Setter
-        							Property="Background"
-        							Value="{StaticResource Background}" />
-                            </Style>
-                            <Style
-        						x:Key="DataShapeStyle"
-        						TargetType="Shape">
-                                <Setter
-        							Property="Stroke"
-        							Value="{StaticResource Background}" />
-                                <Setter
-        							Property="StrokeThickness"
-        							Value="2" />
-                                <Setter
-        							Property="StrokeMiterLimit"
-        							Value="1" />
-                                <Setter
-        							Property="Fill"
-        							Value="{StaticResource Background}" />
-                            </Style>
-                        </ResourceDictionary>
-                    </Charting:ResourceDictionaryCollection>
-                </Charting:Chart.Palette>
-                <Charting:LineSeries Title="" Margin="0"  IndependentValuePath="DTReading" DependentValuePath="Humidity" IsSelectionEnabled="False" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
-                    <Charting:LineSeries.TransitionEasingFunction>
-                        <BounceEase EasingMode="EaseInOut" />
 
-                    </Charting:LineSeries.TransitionEasingFunction>
-                </Charting:LineSeries>
-            </Charting:Chart>
-        </StackPanel>
+
     </Grid>
 </Page>

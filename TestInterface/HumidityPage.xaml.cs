@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.UI.Xaml.Charts;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,7 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using WinRTXamlToolkit.Controls.DataVisualization.Charting;
+
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,26 +30,26 @@ namespace TestInterface
         public HumidityPage()
         {
             this.InitializeComponent();
-            //Removing Legend Item from the Chart
-            HumChart.LegendItems.Clear();
-            //Callback returns reading value from device through App page
-            (Application.Current as TestInterface.App).HumidityCallbacks += HumidityCallBack;
+
+            (Application.Current as TestInterface.App).humiRead.CollectionChanged += HumiRead_CollectionChanged;
+            
         }
 
-        private void HumidityCallBack(float humi)
+        private void HumiRead_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            btnCurrentHumi.Content = String.Format("Relative\nHumidity:\n{0:f2} %", humi);
+            btnCurrentHumi.Content = string.Format("Relative\nHumidity:\n{0:f2} %", (Application.Current as TestInterface.App).humiRead.Last());
 
-            //Self-truncating Stack List
             if (HumNdTime.Count >= 15)
             {
                 HumNdTime.Dequeue();
 
             }
-            HumNdTime.Enqueue(new HumControl { Humidity = double.Parse(humi.ToString()), DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
+            HumNdTime.Enqueue(new HumControl { Humidity = double.Parse((Application.Current as TestInterface.App).humiRead.Last().ToString()), DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
 
-            (HumChart.Series[0] as LineSeries).ItemsSource = HumNdTime.ToList();
+            (sfchart.Series[0] as FastLineSeries).ItemsSource = HumNdTime.ToList();
+
         }
+
 
         private void btnBACK_Click(object sender, RoutedEventArgs e)
         {

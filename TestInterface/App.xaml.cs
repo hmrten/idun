@@ -36,14 +36,12 @@ namespace TestInterface
         private HTS221 sensor = new HTS221();
         private LPS25H pressureSense = new LPS25H();
 
-        public delegate void SensorCallbackTemp(float temp);
-        public SensorCallbackTemp TempCallbacks;
+ 
+        public ObservableCollection<float> humiRead = new ObservableCollection<float>();
+ 
+        public ObservableCollection<float> tempRead = new ObservableCollection<float>();
 
-        public delegate void SensorCallbackPress(float press);
-        public SensorCallbackPress PressureCallbacks;
-
-        public delegate void SensorCallbackHum(float humi);
-        public SensorCallbackHum HumidityCallbacks;
+        public ObservableCollection<float> presRead = new ObservableCollection<float>();
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -63,16 +61,24 @@ namespace TestInterface
             MaxNrBfrMaintenance = 1;
             currentNrofServiceCalls = 0;
 
+            tempRead.Add(sensor.ReadTemperature());
+            presRead.Add(pressureSense.ReadPressure());
+            humiRead.Add(sensor.ReadHumidity());
            
         }
 
+
         private void TempTimer_Tick(object sender, object e)
         {
-            TempCallbacks.Invoke(sensor.ReadTemperature());
-            PressureCallbacks.Invoke(pressureSense.ReadPressure()); 
-            HumidityCallbacks.Invoke(sensor.ReadHumidity());
+           
+            tempRead.Add(sensor.ReadTemperature());
+            if (tempRead.Count > 15) { tempRead.Take(15); }
+           
+            presRead.Add(pressureSense.ReadPressure());
+            if (presRead.Count>15) { presRead.Take(15); }
 
-
+            humiRead.Add(sensor.ReadHumidity());
+            if (humiRead.Count > 15) { humiRead.Take(15); }
         }
 
 

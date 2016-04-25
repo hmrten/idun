@@ -36,25 +36,25 @@ namespace TestInterface
             keyboard.RegisterTarget(textBoxNote);
             keyboard.RegisterTarget(MaxServiceNr);
 
-            (Application.Current as TestInterface.App).TempCallbacks += TempCallBack;
-            (Application.Current as TestInterface.App).PressureCallbacks += PressureCallBack;
-            (Application.Current as TestInterface.App).HumidityCallbacks += HumidityCallBack;
+            //(Application.Current as TestInterface.App).TempCallbacks += TempCallBack;
+            //(Application.Current as TestInterface.App).PressureCallbacks += PressureCallBack;
+            //(Application.Current as TestInterface.App).HumidityCallbacks += HumidityCallBack;
         }
 
-        private void HumidityCallBack(float humi)
-        {
-            RHumi = String.Format(" Relative Humidity: {0:f2} % |", humi);
-        }
+        //private void HumidityCallBack(float humi)
+        //{
+        //    RHumi = String.Format(" Relative Humidity: {0:f2} % |", humi);
+        //}
 
-        private void PressureCallBack(float press)
-        {
-            RPres = String.Format(" Pressure: {0} hPa |", press);
-        }
+        //private void PressureCallBack(float press)
+        //{
+        //    RPres = String.Format(" Pressure: {0} hPa |", press);
+        //}
 
-        private void TempCallBack(float temp)
-        {
-            RTemp = string.Format(" Temperature: {0:f2} °C |", temp);
-        }
+        //private void TempCallBack(float temp)
+        //{
+        //    RTemp = string.Format(" Temperature: {0:f2} °C |", temp);
+        //}
 
         private void btnBACK_Click(object sender, RoutedEventArgs e)
         {
@@ -93,16 +93,16 @@ namespace TestInterface
 
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-            //Saving global data and submitting report. Change of a maximum numbers of service calls trigers 
-            (Application.Current as TestInterface.App).MaxNrBfrMaintenance = int.Parse(MaxServiceNr.Text);
-            string Datum = DateTime.Now.Year.ToString("0000") + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00") + " on " + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00");
-            if (textBoxNote.Text=="" || textBoxNote.Text == null || textBoxNote.Text == "Enter your note here.") { textBoxNote.Text = " No Entry on Note. Automatic Insert. Maximum calls changed."; }
-            (Application.Current as TestInterface.App).ReportForMain.Insert(0, new Report.ReportList { DTofServiceCall = Datum, SCHumidity = RHumi, SCPressure = RPres, SCTemperature = RTemp, MaxNr = " | Maintenance After " + (Application.Current as TestInterface.App).currentNrofServiceCalls.ToString() + " Run(s) |", Note ="Note: " + textBoxNote.Text });
-            (Application.Current as TestInterface.App).currentNrofServiceCalls = 0;
-            this.Frame.Navigate(typeof(StatusBar), null);
-        }
+        //private void btnSave_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //Saving global data and submitting report. Change of a maximum numbers of service calls trigers 
+        //    (Application.Current as TestInterface.App).MaxNrBfrMaintenance = int.Parse(MaxServiceNr.Text);
+        //    string Datum = DateTime.Now.Year.ToString("0000") + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00") + " on " + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00");
+        //    if (textBoxNote.Text=="" || textBoxNote.Text == null || textBoxNote.Text == "Enter your note here.") { textBoxNote.Text = " No Entry on Note. Automatic Insert. Maximum calls changed."; }
+        //    (Application.Current as TestInterface.App).ReportForMain.Insert(0, new Report.ReportList { DTofServiceCall = Datum, SCHumidity = RHumi, SCPressure = RPres, SCTemperature = RTemp, MaxNr = " | Maintenance After " + (Application.Current as TestInterface.App).currentNrofServiceCalls.ToString() + " Run(s) |", Note ="Note: " + textBoxNote.Text });
+        //    (Application.Current as TestInterface.App).currentNrofServiceCalls = 0;
+        //    this.Frame.Navigate(typeof(StatusBar), null);
+        //}
 
         private void onLoadMSN(object sender, RoutedEventArgs e)
         {
