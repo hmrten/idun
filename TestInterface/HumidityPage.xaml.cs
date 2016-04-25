@@ -25,7 +25,7 @@ namespace TestInterface
     /// </summary>
     public sealed partial class HumidityPage : Page
     {
-        private Queue<HumControl> HumNdTime = new Queue<HumControl>();
+        //private Queue<HumControl> HumNdTime = new Queue<HumControl>();
 
         public HumidityPage()
         {
@@ -52,14 +52,22 @@ namespace TestInterface
             btnCurrentHumi.Content = String.Format("Relative\nHumidity:\n{0:f2} %", humi);
 
             //Self-truncating Stack List
-            if (HumNdTime.Count >= 15)
-            {
-                HumNdTime.Dequeue();
+            //if (HumNdTime.Count >= 15)
+            //{
+            //    HumNdTime.Dequeue();
 
-            }
-            HumNdTime.Enqueue(new HumControl { Humidity = double.Parse(humi.ToString()), DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
+            //}
+            //HumNdTime.Enqueue(new HumControl { Humidity = double.Parse(humi.ToString()), DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
 
-            (HumChart.Series[0] as LineSeries).ItemsSource = HumNdTime.ToList();
+            var now = DateTime.Now;
+            var items = from r in reader.Readings
+                        select new
+                        {
+                            Humidity = r.Humidity,
+                            DTReading = now.ToString("HH:mm:ss")
+                        };
+
+            (HumChart.Series[0] as LineSeries).ItemsSource = items;
         }
 
         private void btnBACK_Click(object sender, RoutedEventArgs e)
