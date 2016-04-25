@@ -36,6 +36,7 @@ namespace TestInterface
         public TemperaturePage()
         {
             this.InitializeComponent();
+
             TempChart.LegendItems.Clear();
 
             TempUnit = "°C";
@@ -47,8 +48,9 @@ namespace TestInterface
         private void TempCallback(float temp)
         {
            ConvertedTemp = temp;
-           btnCurrentTemp.Content = string.Format("Temperature:\n{0:f2} °C", ConvertedTemp);
+           btnCurrentTemp.Content = string.Format("Temperature:\n{0:f2} "+ TempUnit, ConvertedTemp);
 
+            //Self-truncating Stack List
             if (TempNdTime.Count >= 15)
             {
                 TempNdTime.Dequeue();
@@ -70,42 +72,5 @@ namespace TestInterface
         }
 
 
-
-        //private void buttonLoadTemp_Click(object sender, RoutedEventArgs e)
-        //{
-        //    TempControl Init = new TempControl();
-        //    List<TempControl> DataList = new List<TempControl>();
-        //    DataList = Init.CreateTemp();
-
-        //    double canvasHeight = TempCanvas.Height;
-        //    double canvasWidth = TempCanvas.Width;
-
-        //    double MaxTemp = 100;
-        //    double MinTemp = 0;
-        //    foreach (var item in DataList)
-        //    {
-        //        MaxTemp = item.Temperature > MaxTemp ? item.Temperature : MaxTemp;
-        //        MinTemp = item.Temperature < MinTemp ? item.Temperature : MinTemp;
-        //    }
-
-        //    double MaxDate = 31;
-
-        //    var coordinates = new List<Tuple<double, double>>();
-
-        //    foreach (var dataitem in DataList)
-        //    {
-        //        double x = (canvasWidth * (dataitem.DTReading / MaxDate));
-        //        double y = canvasHeight * (dataitem.Temperature / MaxTemp);
-        //        coordinates.Add(new Tuple<double, double>(x, y));
-        //    }
-
-        //    Color c = new Color() { R = 255, G = 255, B = 255 };
-
-        //    for (int i = 0; i <= 29; i++)
-        //    {
-        //        var line = new Line() { X1 = coordinates[i].Item1, Y1 = coordinates[i].Item2, X2 = coordinates[i + 1].Item1, Y2 = coordinates[i + 1].Item2, Stroke = new SolidColorBrush(c), StrokeThickness = 2.0 };
-        //        TempCanvas.Children.Add(line);
-        //    }
-        //}
     }
 }

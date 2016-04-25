@@ -95,6 +95,7 @@ namespace TestInterface
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            //Saving global data and submitting report. Change of a maximum numbers of Usage Calls triggers Service Call
             (Application.Current as TestInterface.App).MaxNrBfrMaintenance = int.Parse(MaxServiceNr.Text);
             string Datum = DateTime.Now.Year.ToString("0000") + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00") + " on " + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00");
             if (textBoxNote.Text=="" || textBoxNote.Text == null || textBoxNote.Text == "Enter your note here.") { textBoxNote.Text = " No Entry on Note. Automatic Insert. Maximum calls changed."; }

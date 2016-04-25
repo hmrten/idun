@@ -63,6 +63,7 @@ namespace TestInterface
 
         private async void btnRead_Click(object sender, RoutedEventArgs e)
         {
+            //Reading Text contend inside of textBoxRead
             MediaElement mediaElement = new MediaElement();
 
             SpeechSynthesisStream stream = await synthesizer.SynthesizeTextToStreamAsync(textBoxRead.Text);
@@ -75,10 +76,10 @@ namespace TestInterface
 
         private void InitializeListboxVoiceChooser()
         {
-            // Get all of the installed voices.
+            // Get all of the installed voices
             var voices = SpeechSynthesizer.AllVoices;
 
-            // Get the currently selected voice.
+            // Get the currently selected voice
             VoiceInformation currentVoice = synthesizer.Voice;
 
             foreach (VoiceInformation voice in voices.OrderBy(p => p.Language))

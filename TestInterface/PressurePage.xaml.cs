@@ -31,13 +31,15 @@ namespace TestInterface
             this.InitializeComponent();
 
             PressChart.LegendItems.Clear();
+
             (Application.Current as TestInterface.App).PressureCallbacks += PressureCallBack;
         }
 
         private void PressureCallBack(float press)
         {
             btnCurrentPress.Content = String.Format("Pressure:\n{0:f2} hPa", press);
-
+            
+            //Self-truncating Stack List
             if (PressNdTime.Count >= 15)
             {
                 PressNdTime.Dequeue();
