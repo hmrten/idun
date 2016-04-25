@@ -28,8 +28,7 @@ namespace TestApp
         public MainPage()
         {
             this.InitializeComponent();
-
-            this.Loaded += MainPage_Loaded;
+            senseHatReader.Init();
         }
 
         private void SenseHatTick(SenseHatReader reader, SenseHatReading reading)
@@ -39,10 +38,16 @@ namespace TestApp
                 r.Temperature, r.Humidity, r.Pressure));
         }
 
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            senseHatReader.Init();
+            base.OnNavigatedTo(e);
             senseHatReader.Tick += SenseHatTick;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            senseHatReader.Tick -= SenseHatTick;
         }
     }
 }
