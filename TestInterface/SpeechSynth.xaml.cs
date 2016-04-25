@@ -42,7 +42,7 @@ namespace TestInterface
 
             speechResourceMap = ResourceManager.Current.MainResourceMap.GetSubtree("LocalizationTTSResources");
 
-            InitializeListboxVoiceChooser();
+            //InitializeListboxVoiceChooser();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -72,48 +72,39 @@ namespace TestInterface
             mediaElement.SetSource(stream, stream.ContentType);
             mediaElement.Play();
         }
+        //!!!UNSTABLE - adding items to ListView dynamically cause crash!!!
 
+        //private void InitializeListboxVoiceChooser()
+        //{
+        //    // Get all of the installed voices
+        //    var voices = SpeechSynthesizer.AllVoices;
 
-        private void InitializeListboxVoiceChooser()
-        {
-            // Get all of the installed voices
-            var voices = SpeechSynthesizer.AllVoices;
+        //    // Get the currently selected voice
+        //    VoiceInformation currentVoice = synthesizer.Voice;
 
-            // Get the currently selected voice
-            VoiceInformation currentVoice = synthesizer.Voice;
+        //    foreach (VoiceInformation voice in voices.OrderBy(p => p.Language))
+        //    {
+        //        ComboBoxItem item = new ComboBoxItem();
+        //        item.Name = voice.DisplayName;
+        //        item.Tag = voice;
+        //        item.Content = voice.DisplayName + " (Language: " + voice.Language + ")";
+        //        listBox.Items.Add(item);
 
-            foreach (VoiceInformation voice in voices.OrderBy(p => p.Language))
-            {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Name = voice.DisplayName;
-                item.Tag = voice;
-                item.Content = voice.DisplayName + " (Language: " + voice.Language + ")";
-                listBox.Items.Add(item);
+        //        // Check to see if we're looking at the current voice and set it as selected in the listbox.
+        //        if (currentVoice.Id == voice.Id)
+        //        {
+        //            item.IsSelected = true;
+        //            listBox.SelectedItem = item;
+        //        }
+        //    }
+        //}
 
-                // Check to see if we're looking at the current voice and set it as selected in the listbox.
-                if (currentVoice.Id == voice.Id)
-                {
-                    item.IsSelected = true;
-                    listBox.SelectedItem = item;
-                }
-            }
-        }
+        //private void onSelectChange(object sender, SelectionChangedEventArgs e)
+        //{
+        //    ComboBoxItem item = (ComboBoxItem)(listBox.SelectedItem);
+        //    VoiceInformation voice = (VoiceInformation)(item.Tag);
+        //    synthesizer.Voice = voice;
 
-        private async void onSelectChange(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBoxItem item = (ComboBoxItem)(listBox.SelectedItem);
-            VoiceInformation voice = (VoiceInformation)(item.Tag);
-            synthesizer.Voice = voice;
-
-            MediaElement mediaElement = new MediaElement();
-
-      
-            SpeechSynthesisStream stream = await synthesizer.SynthesizeTextToStreamAsync("Hello!");
-
-
-            mediaElement.SetSource(stream, stream.ContentType);
-            mediaElement.Play();
-
-        }
+        //}
     }
 }

@@ -114,9 +114,9 @@ namespace TestInterface
             {
                 //Data Collection for Global List
                 string Datum = " " + DateTime.Now.Year.ToString("0000") + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00") + " on " + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00") + " ";
-                RHumi = " Humidity: " + string.Format("0:0.00", (Application.Current as TestInterface.App).humiRead.Last().ToString()) + "% ";
-                RPres = " Pressure: " + string.Format("0:0.00", (Application.Current as TestInterface.App).presRead.Last().ToString()) + "hPa ";
-                RTemp = " Temperature: " + string.Format("0:0.00", (Application.Current as TestInterface.App).tempRead.Last().ToString()) + "°C ";
+                RHumi = " Humidity: " + (Application.Current as TestInterface.App).humiRead.Last() + "% ";
+                RPres = " Pressure: " + (Application.Current as TestInterface.App).presRead.Last() + "hPa ";
+                RTemp = " Temperature: " +(Application.Current as TestInterface.App).tempRead.Last() + "°C ";
                 //Global List with Service Calls
                 (Application.Current as TestInterface.App).ReportForMain.Insert(0, new Report.ReportList { DTofServiceCall = Datum, SCHumidity = RHumi, SCPressure = RPres, SCTemperature = RTemp, MaxNr = " Maintenance After " + (Application.Current as TestInterface.App).currentNrofServiceCalls.ToString() + " Run(s) ", Note = " Note: Automatic Insertion " });
                 (Application.Current as TestInterface.App).currentNrofServiceCalls = 0;
