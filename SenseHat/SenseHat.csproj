@@ -107,7 +107,12 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\I2cUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\LPS25H.cs" />
+    <Compile Include="src\Sensor.cs" />
+    <Compile Include="src\HTS221.cs" />
+    <Compile Include="src\SenseHat.cs" />
     <EmbeddedResource Include="Properties\SenseHat.rd.xml" />
   </ItemGroup>
   <ItemGroup>
