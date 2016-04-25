@@ -1,0 +1,70 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestInterface"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+    x:Class="TestInterface.PressurePage"
+    mc:Ignorable="d">
+
+    <Grid Background="Black" HorizontalAlignment="Left" Width="800" Height="480" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnDisplayGraph" Margin="125,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
+            <TextBlock TextWrapping="Wrap">Display Graph</TextBlock>
+        </Button>
+        <Button x:Name="btnMUnit" Content="Measurement Unit [Pa / tor / atm] " Margin="240,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14" />
+        <Button x:Name="btnBACK" Content="Return" Margin="680,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnBACK_Click" FontSize="14"/>
+        <Button x:Name="btnCurrentPress" Margin="10,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
+            <TextBlock TextWrapping="Wrap">Initializing Pressure Reading</TextBlock>
+        </Button>
+        <StackPanel Height="480" VerticalAlignment="Top" >
+            <Charting:Chart x:Name="PressChart" Height="310" Margin="10,10,10,0" BorderBrush="White" Foreground="White">
+
+                <Charting:LineSeries Title="" Margin="0" IndependentValuePath="DTReading" DependentValuePath="Pressure" IsSelectionEnabled="False" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False" >
+                    <Charting:LineSeries.TransitionEasingFunction>
+                        <BounceEase EasingMode="EaseInOut" />
+
+                    </Charting:LineSeries.TransitionEasingFunction>
+                </Charting:LineSeries>
+                <Charting:Chart.Palette>
+                    <Charting:ResourceDictionaryCollection>
+                        <!-- Red -->
+                        <ResourceDictionary>
+                            <SolidColorBrush
+            x:Key="Background"
+            Color="#FFFFFFFF" />
+                            <Style
+            x:Key="DataPointStyle"
+            TargetType="Control">
+                                <Setter
+                Property="Background"
+                Value="{StaticResource Background}" />
+                            </Style>
+                            <Style
+            x:Key="DataShapeStyle"
+            TargetType="Shape">
+                                <Setter
+                Property="Stroke"
+                Value="{StaticResource Background}" />
+                                <Setter
+                Property="StrokeThickness"
+                Value="2" />
+                                <Setter
+                Property="StrokeMiterLimit"
+                Value="1" />
+                                <Setter
+                Property="Fill"
+                Value="{StaticResource Background}" />
+                            </Style>
+
+                        </ResourceDictionary>
+                    </Charting:ResourceDictionaryCollection>
+                </Charting:Chart.Palette>
+            </Charting:Chart>
+        </StackPanel>
+    </Grid>
+</Page>
