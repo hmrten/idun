@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using SenseHat;
 using TestInterface.HumidityControl;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -30,13 +31,24 @@ namespace TestInterface
         {
             this.InitializeComponent();
             //Removing Legend Item from the Chart
-            HumChart.LegendItems.Clear();
-            //Callback returns reading value from device through App page
-            (Application.Current as TestInterface.App).HumidityCallbacks += HumidityCallBack;
+            HumChart.LegendItems.Clear();            
         }
 
-        private void HumidityCallBack(float humi)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+            (Application.Current as TestInterface.App).SenseHatReader.Tick += SenseHatReaderTick;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            (Application.Current as TestInterface.App).SenseHatReader.Tick -= SenseHatReaderTick;
+        }
+
+        private void SenseHatReaderTick(SenseHatReader reader, SenseHatReading reading)
+        {
+            var humi = reading.Humidity;
             btnCurrentHumi.Content = String.Format("Relative\nHumidity:\n{0:f2} %", humi);
 
             //Self-truncating Stack List

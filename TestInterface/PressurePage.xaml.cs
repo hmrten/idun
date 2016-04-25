@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using SenseHat;
 using TestInterface.PressureControl;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -31,11 +32,23 @@ namespace TestInterface
             this.InitializeComponent();
 
             PressChart.LegendItems.Clear();
-            (Application.Current as TestInterface.App).PressureCallbacks += PressureCallBack;
         }
 
-        private void PressureCallBack(float press)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+            (Application.Current as TestInterface.App).SenseHatReader.Tick += SenseHatReaderTIck;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            (Application.Current as TestInterface.App).SenseHatReader.Tick -= SenseHatReaderTIck;
+        }
+
+        private void SenseHatReaderTIck(SenseHatReader reader, SenseHatReading reading)
+        {
+            var press = reading.Pressure;
             btnCurrentPress.Content = String.Format("Pressure:\n{0:f2} hPa", press);
 
             if (PressNdTime.Count >= 15)

@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using SenseHat;
 using TestInterface.TemperatureControl;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -39,22 +40,31 @@ namespace TestInterface
             TempChart.LegendItems.Clear();
 
             TempUnit = "°C";
-
-            (Application.Current as TestInterface.App).TempCallbacks += TempCallback;
-
         }
 
-        private void TempCallback(float temp)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-           ConvertedTemp = temp;
-           btnCurrentTemp.Content = string.Format("Temperature:\n{0:f2} °C", ConvertedTemp);
+            base.OnNavigatedTo(e);
+            (Application.Current as TestInterface.App).SenseHatReader.Tick += SenseHatReaderTick;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            (Application.Current as TestInterface.App).SenseHatReader.Tick -= SenseHatReaderTick;
+        }
+
+        private void SenseHatReaderTick(SenseHatReader reader, SenseHatReading reading)
+        {
+            ConvertedTemp = reading.Temperature;
+            btnCurrentTemp.Content = string.Format("Temperature:\n{0:f2} °C", ConvertedTemp);
 
             if (TempNdTime.Count >= 15)
             {
                 TempNdTime.Dequeue();
 
             }
-            TempNdTime.Enqueue(new TempControl { Temperature = ConvertedTemp, DTReading =DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
+            TempNdTime.Enqueue(new TempControl { Temperature = ConvertedTemp, DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
 
             (TempChart.Series[0] as LineSeries).ItemsSource = TempNdTime.ToList();
         }

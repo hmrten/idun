@@ -16,6 +16,7 @@ using Windows.UI;
 using Windows.UI.Xaml.Media.Animation;
 using OnScreenKeyboard;
 using System.Text.RegularExpressions;
+using SenseHat;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,25 +36,25 @@ namespace TestInterface
             this.InitializeComponent();
             keyboard.RegisterTarget(textBoxNote);
             keyboard.RegisterTarget(MaxServiceNr);
-
-            (Application.Current as TestInterface.App).TempCallbacks += TempCallBack;
-            (Application.Current as TestInterface.App).PressureCallbacks += PressureCallBack;
-            (Application.Current as TestInterface.App).HumidityCallbacks += HumidityCallBack;
         }
 
-        private void HumidityCallBack(float humi)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            RHumi = String.Format(" Relative Humidity: {0:f2} % |", humi);
+            base.OnNavigatedTo(e);
+            (Application.Current as TestInterface.App).SenseHatReader.Tick += SenseHatReaderTick;
         }
 
-        private void PressureCallBack(float press)
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            RPres = String.Format(" Pressure: {0} hPa |", press);
+            base.OnNavigatedFrom(e);
+            (Application.Current as TestInterface.App).SenseHatReader.Tick -= SenseHatReaderTick;
         }
 
-        private void TempCallBack(float temp)
+        private void SenseHatReaderTick(SenseHatReader reader, SenseHatReading reading)
         {
-            RTemp = string.Format(" Temperature: {0:f2} °C |", temp);
+            RHumi = String.Format(" Relative Humidity: {0:f2} % |", reading.Humidity);
+            RPres = String.Format(" Pressure: {0} hPa |", reading.Pressure);
+            RTemp = string.Format(" Temperature: {0:f2} °C |", reading.Temperature);
         }
 
         private void btnBACK_Click(object sender, RoutedEventArgs e)

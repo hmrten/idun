@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SenseHat;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -31,18 +32,24 @@ namespace TestInterface
 
         public ObservableCollection<ReportList> ReportForMain = new ObservableCollection<ReportList>();
 
-        public DispatcherTimer TempTimer = new DispatcherTimer();
-        private HTS221 sensor = new HTS221();
-        private LPS25H pressureSense = new LPS25H();
+        //public DispatcherTimer TempTimer = new DispatcherTimer();
+        //private HTS221 sensor = new HTS221();
+        //private LPS25H pressureSense = new LPS25H();
 
-        public delegate void SensorCallbackTemp(float temp);
-        public SensorCallbackTemp TempCallbacks;
+        //public delegate void SensorCallbackTemp(float temp);
+        //public SensorCallbackTemp TempCallbacks;
 
-        public delegate void SensorCallbackPress(float press);
-        public SensorCallbackPress PressureCallbacks;
+        //public delegate void SensorCallbackPress(float press);
+        //public SensorCallbackPress PressureCallbacks;
 
-        public delegate void SensorCallbackHum(float humi);
-        public SensorCallbackHum HumidityCallbacks;
+        //public delegate void SensorCallbackHum(float humi);
+        //public SensorCallbackHum HumidityCallbacks;
+
+        public SenseHatReader.SenseHatTicker TemperatureReading;
+        public SenseHatReader.SenseHatTicker HumidityReading;
+        public SenseHatReader.SenseHatTicker PressureReading;
+
+        public SenseHatReader SenseHatReader { get; private set; }
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -54,27 +61,19 @@ namespace TestInterface
             this.Suspending += OnSuspending;
 
             //Timer for reading Sensor Data, standard ticks 1000ms
-            TempTimer.Interval = TimeSpan.FromMilliseconds(1000);
-            TempTimer.Tick += TempTimer_Tick;
-            sensor.Init();
-            pressureSense.Init();
-            TempTimer.Start();
+            //TempTimer.Interval = TimeSpan.FromMilliseconds(1000);
+            //TempTimer.Tick += TempTimer_Tick;
+            //sensor.Init();
+            //pressureSense.Init();
+            //TempTimer.Start();
+
+            SenseHatReader = new SenseHatReader(1000, 20);
+
+            SenseHatReader.Init();
+
             MaxNrBfrMaintenance = 1;
             currentNrofServiceCalls = 0;
-
-           
         }
-
-        private void TempTimer_Tick(object sender, object e)
-        { 
-            TempCallbacks.Invoke(sensor.ReadTemperature());
-            PressureCallbacks.Invoke(pressureSense.ReadPressure()); 
-            HumidityCallbacks.Invoke(sensor.ReadHumidity());
-
-
-        }
-
-
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

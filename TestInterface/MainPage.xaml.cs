@@ -19,6 +19,7 @@ using static System.Collections.Specialized.BitVector32;
 using System.Threading.Tasks;
 using System.Threading;
 using TestInterface.Report;
+using SenseHat;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace TestInterface
@@ -35,37 +36,36 @@ namespace TestInterface
         public MainPage()
         {
             this.InitializeComponent();
-
-            
-            (Application.Current as TestInterface.App).TempCallbacks += TempCallBack;
-            (Application.Current as TestInterface.App).PressureCallbacks += PressureCallBack;
-            (Application.Current as TestInterface.App).HumidityCallbacks += HumidityCallBack;
-
-          
         }
 
-        private void HumidityCallBack(float humi)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //Button Value
-            btnHumidity.Content=String.Format("Relative\nHumidity:\n{0:f2} % ", humi);
-            //List Value
-            RHumi = String.Format(" Relative Humidity: {0:f2} % |", humi);
+            base.OnNavigatedTo(e);
+            (Application.Current as TestInterface.App).SenseHatReader.Tick += SenseHatReaderTIck;
         }
 
-        private void PressureCallBack(float press)
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            //Button Value
-            btnPressure.Content=String.Format("Pressure:\n{0:f2} hPa ", press);
-            //List Value
-            RPres = String.Format(" Pressure: {0:f2} hPa |", press);
+            base.OnNavigatedFrom(e);
+            (Application.Current as TestInterface.App).SenseHatReader.Tick -= SenseHatReaderTIck;
         }
 
-        private void TempCallBack(float temp)
+        private void SenseHatReaderTIck(SenseHatReader reader, SenseHatReading reading)
         {
             //Button Value
-            btnTemp.Content = string.Format("Temperature:\n{0:f2} °C", temp);
+            btnHumidity.Content = String.Format("Relative\nHumidity:\n{0:f2} % ", reading.Humidity);
             //List Value
-            RTemp = string.Format(" Temperature: {0:f2} °C |", temp);
+            RHumi = String.Format(" Relative Humidity: {0:f2} % |", reading.Humidity);
+
+            //Button Value
+            btnPressure.Content = String.Format("Pressure:\n{0:f2} hPa ", reading.Pressure);
+            //List Value
+            RPres = String.Format(" Pressure: {0:f2} hPa |", reading.Pressure);
+
+            //Button Value
+            btnTemp.Content = string.Format("Temperature:\n{0:f2} °C", reading.Temperature);
+            //List Value
+            RTemp = string.Format(" Temperature: {0:f2} °C |", reading.Temperature);
         }
 
         private void btnTemp_Click(object sender, RoutedEventArgs e)
