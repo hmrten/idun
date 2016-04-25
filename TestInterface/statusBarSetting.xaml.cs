@@ -63,13 +63,13 @@ namespace TestInterface
 
         private void maxNr_GotFocus(object sender, RoutedEventArgs e)
         {
-            MaxServiceNr.Text = "";
-            
+            MaxServiceNr.Text= string.Empty;
+
         }
 
         private void NoteGotFocus(object sender, RoutedEventArgs e)
         {
-            textBoxNote.Text = "";
+            textBoxNote.Text= string.Empty;
         }
 
         private void parseCheckMaxNR(object sender, RoutedEventArgs e)
@@ -77,13 +77,13 @@ namespace TestInterface
             int broj;
             if(!int.TryParse(MaxServiceNr.Text,out broj))
             {
-                MaxServiceNr.Text = "";
+                MaxServiceNr.Text= string.Empty;
                 MaxServiceNr.Focus(FocusState.Keyboard);
 
             }
             else if (broj > 9999 || broj <= 0)
             {
-                MaxServiceNr.Text = "";
+                MaxServiceNr.Text=string.Empty;
                 MaxServiceNr.Focus(FocusState.Keyboard);
             }
             else
@@ -95,7 +95,7 @@ namespace TestInterface
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            //Saving global data and submitting report. Change of a maximum numbers of Usage Calls triggers Service Call
+            //Saving global data and submitting report. Change of a maximum numbers of service calls trigers 
             (Application.Current as TestInterface.App).MaxNrBfrMaintenance = int.Parse(MaxServiceNr.Text);
             string Datum = DateTime.Now.Year.ToString("0000") + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00") + " on " + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00");
             if (textBoxNote.Text=="" || textBoxNote.Text == null || textBoxNote.Text == "Enter your note here.") { textBoxNote.Text = " No Entry on Note. Automatic Insert. Maximum calls changed."; }

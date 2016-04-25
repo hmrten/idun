@@ -57,7 +57,7 @@ namespace TestInterface
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            textBoxRead.Text = "";
+            textBoxRead.Text = string.Empty;
             
         }
 

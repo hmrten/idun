@@ -22,10 +22,8 @@
         </Button>
         <StackPanel Margin="0,2,0,0" >
             <Charting:Chart x:Name="HumChart" Height="310" Margin="10,10,10,0" BorderBrush="White" Foreground="White">
-
                 <Charting:Chart.Palette>
                     <Charting:ResourceDictionaryCollection>
-                        <!-- Red -->
                         <ResourceDictionary>
                             <SolidColorBrush
         						x:Key="Background"
@@ -53,12 +51,10 @@
         							Property="Fill"
         							Value="{StaticResource Background}" />
                             </Style>
-
                         </ResourceDictionary>
                     </Charting:ResourceDictionaryCollection>
                 </Charting:Chart.Palette>
-
-                <Charting:LineSeries Title="" Margin="0" IndependentValuePath="DTReading" DependentValuePath="Humidity" IsSelectionEnabled="False" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False" >
+                <Charting:LineSeries Title="" Margin="0"  IndependentValuePath="DTReading" DependentValuePath="Humidity" IsSelectionEnabled="False" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
                     <Charting:LineSeries.TransitionEasingFunction>
                         <BounceEase EasingMode="EaseInOut" />
 

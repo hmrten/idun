@@ -22,31 +22,18 @@
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="white" />
-        <uap:InitialRotationPreference>
-          <uap:Rotation Preference="landscape" />
-          <uap:Rotation Preference="landscapeFlipped" />
-        </uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>
   <Capabilities>
-    <Capability Name="internetClient" />
-    <Capability Name="internetClientServer" />
     <Capability Name="privateNetworkClientServer" />
     <Capability Name="codeGeneration" />
     <Capability Name="allJoyn" />
     <uap:Capability Name="removableStorage" />
     <uap:Capability Name="userAccountInformation" />
-    <uap:Capability Name="videosLibrary" />
-    <uap:Capability Name="voipCall" />
-    <uap:Capability Name="objects3D" />
     <uap:Capability Name="musicLibrary" />
-    <uap:Capability Name="enterpriseAuthentication" />
     <uap:Capability Name="chat" />
-    <uap:Capability Name="blockedChatMessages" />
     <uap:Capability Name="appointments" />
-    <DeviceCapability Name="webcam" />
     <DeviceCapability Name="microphone" />
-    <DeviceCapability Name="location" />
   </Capabilities>
 </Package>

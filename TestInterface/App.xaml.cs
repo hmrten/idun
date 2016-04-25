@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using TestInterface.Report;
 using TestInterface.SensorControl;
 using TestInterface.TemperatureControl;
@@ -66,7 +67,7 @@ namespace TestInterface
         }
 
         private void TempTimer_Tick(object sender, object e)
-        { 
+        {
             TempCallbacks.Invoke(sensor.ReadTemperature());
             PressureCallbacks.Invoke(pressureSense.ReadPressure()); 
             HumidityCallbacks.Invoke(sensor.ReadHumidity());

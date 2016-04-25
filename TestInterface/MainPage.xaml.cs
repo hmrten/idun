@@ -49,7 +49,7 @@ namespace TestInterface
             //Button Value
             btnHumidity.Content=String.Format("Relative\nHumidity:\n{0:f2} % ", humi);
             //List Value
-            RHumi = String.Format(" Relative Humidity: {0:f2} % |", humi);
+            RHumi =  String.Format(" Relative Humidity: {0:f2} % |", humi);
         }
 
         private void PressureCallBack(float press)
@@ -104,7 +104,7 @@ namespace TestInterface
                 string Datum = DateTime.Now.Year.ToString("0000") + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00")+" on "+DateTime.Now.Hour.ToString("00")+":"+DateTime.Now.Minute.ToString("00")+":"+DateTime.Now.Second.ToString("00");
                 (Application.Current as TestInterface.App).ReportForMain.Insert(0, new Report.ReportList { DTofServiceCall = Datum, SCHumidity = RHumi, SCPressure = RPres, SCTemperature= RTemp, MaxNr = " | Maintenance After "+(Application.Current as TestInterface.App).currentNrofServiceCalls.ToString()+" Run(s) |", Note=" Note: Automatic Insertion |" });
                 (Application.Current as TestInterface.App).currentNrofServiceCalls = 0;
-                
+
                 //Local List with Service Calls
                 ListViewTest.ItemsSource = (Application.Current as TestInterface.App).ReportForMain;
 
