@@ -42,9 +42,10 @@ namespace TestInterface
             btnCurrUsage.Content = "Current\nUsage\nCalls:\n" + (Application.Current as TestInterface.App).currentNrofServiceCalls + " / " + (Application.Current as TestInterface.App).MaxNrBfrMaintenance;
         }
 
-        //private void onLoadList(object sender, RoutedEventArgs e)
-        //{
-        //    ListViewTest.ItemsSource = (Application.Current as TestInterface.App).ReportForMain;
-        //}
+        private void onLoadList(object sender, RoutedEventArgs e)
+        {
+            ListViewTest.ItemsSource = (Application.Current as TestInterface.App).ReportForMain;
+        }
+
     }
 }

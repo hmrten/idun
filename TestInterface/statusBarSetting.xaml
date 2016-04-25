@@ -14,7 +14,7 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="293,55,0,0" TextWrapping="Wrap" Text="After entering change of maximum numbers you will be required to submit a note as Service was triggered." VerticalAlignment="Top" Foreground="White" SelectionHighlightColor="{x:Null}" Width="267" Height="79"/>
         <TextBox x:Name="textBoxNote" HorizontalAlignment="Left" Height="158" Margin="10,139,0,0" TextWrapping="Wrap" Text="Enter your note here." VerticalAlignment="Top" Width="780" Foreground="White" BorderBrush="White" Background="{x:Null}" GotFocus="NoteGotFocus" SelectionHighlightColor="{x:Null}" />
         <Button x:Name="btnBACK" Content="Return" Margin="680,10,0,0" VerticalAlignment="Top" Width="110" Height="124" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnBACK_Click" ClickMode="Press"/>
-        <Button x:Name="btnSave" Content="Save" Margin="565,9,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" />
+        <Button x:Name="btnSave" Content="Save" Margin="565,9,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnSave_Click" />
 
         <oks:OnScreenKeyBoard x:Name="keyboard" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="212" Margin="4,0,4,-32" Width="792" />
     </Grid>
