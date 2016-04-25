@@ -32,7 +32,7 @@ namespace TestInterface
 
         public ObservableCollection<ReportList> ReportForMain = new ObservableCollection<ReportList>();
 
-        public SenseHatReader SenseHatReader { get; private set; }
+        public SensorReader SensorReader { get; private set; }
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -43,8 +43,8 @@ namespace TestInterface
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-            SenseHatReader = new SenseHatReader(1000, 20);
-            SenseHatReader.Init();
+            SensorReader = new DummyReader(1000, 15);
+            SensorReader.Init();
 
             MaxNrBfrMaintenance = 1;
             currentNrofServiceCalls = 0;

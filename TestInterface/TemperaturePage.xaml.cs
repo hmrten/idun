@@ -29,7 +29,7 @@ namespace TestInterface
     /// </summary>
     public sealed partial class TemperaturePage : Page
     {
-        private Queue<TempControl> TempNdTime = new Queue<TempControl>();
+        //private Queue<TempControl> TempNdTime = new Queue<TempControl>();
         private string TempUnit;
         public double ConvertedTemp;
 
@@ -45,28 +45,36 @@ namespace TestInterface
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            (Application.Current as TestInterface.App).SenseHatReader.Tick += SenseHatReaderTick;
+            (Application.Current as TestInterface.App).SensorReader.Tick += SensorReader_Tick;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            (Application.Current as TestInterface.App).SenseHatReader.Tick -= SenseHatReaderTick;
+            (Application.Current as TestInterface.App).SensorReader.Tick -= SensorReader_Tick;
         }
 
-        private void SenseHatReaderTick(SenseHatReader reader, SenseHatReading reading)
+        private void SensorReader_Tick(SensorReader reader, SensorData data)
         {
-            ConvertedTemp = reading.Temperature;
+            ConvertedTemp = data.Temperature;
             btnCurrentTemp.Content = string.Format("Temperature:\n{0:f2} °C", ConvertedTemp);
 
-            if (TempNdTime.Count >= 15)
-            {
-                TempNdTime.Dequeue();
+            //if (TempNdTime.Count >= 15)
+            //{
+            //    TempNdTime.Dequeue();
 
-            }
-            TempNdTime.Enqueue(new TempControl { Temperature = ConvertedTemp, DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
+            //}
+            //TempNdTime.Enqueue(new TempControl { Temperature = ConvertedTemp, DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
 
-            (TempChart.Series[0] as LineSeries).ItemsSource = TempNdTime.ToList();
+            var now = DateTime.Now;
+            var items = from r in reader.Data
+                        select new
+                        {
+                            Temperature = data.Temperature,
+                            DTReading = now.ToString("HH:mm:ss")
+                        };
+
+            (TempChart.Series[0] as LineSeries).ItemsSource = items;
         }
 
         private void btnBACK_Click(object sender, RoutedEventArgs e)

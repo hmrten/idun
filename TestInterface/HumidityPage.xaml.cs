@@ -37,18 +37,18 @@ namespace TestInterface
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            (Application.Current as TestInterface.App).SenseHatReader.Tick += SenseHatReaderTick;
+            (Application.Current as TestInterface.App).SensorReader.Tick += SensorReader_Tick;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            (Application.Current as TestInterface.App).SenseHatReader.Tick -= SenseHatReaderTick;
+            (Application.Current as TestInterface.App).SensorReader.Tick -= SensorReader_Tick;
         }
 
-        private void SenseHatReaderTick(SenseHatReader reader, SenseHatReading reading)
+        private void SensorReader_Tick(SensorReader reader, SensorData data)
         {
-            var humi = reading.Humidity;
+            var humi = data.Humidity;
             btnCurrentHumi.Content = String.Format("Relative\nHumidity:\n{0:f2} %", humi);
 
             //Self-truncating Stack List
@@ -60,7 +60,7 @@ namespace TestInterface
             //HumNdTime.Enqueue(new HumControl { Humidity = double.Parse(humi.ToString()), DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
 
             var now = DateTime.Now;
-            var items = from r in reader.Readings
+            var items = from r in reader.Data
                         select new
                         {
                             Humidity = r.Humidity,

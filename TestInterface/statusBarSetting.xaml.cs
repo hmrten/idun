@@ -41,20 +41,20 @@ namespace TestInterface
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            (Application.Current as TestInterface.App).SenseHatReader.Tick += SenseHatReaderTick;
+            (Application.Current as TestInterface.App).SensorReader.Tick += SensorReader_Tick;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            (Application.Current as TestInterface.App).SenseHatReader.Tick -= SenseHatReaderTick;
+            (Application.Current as TestInterface.App).SensorReader.Tick -= SensorReader_Tick;
         }
 
-        private void SenseHatReaderTick(SenseHatReader reader, SenseHatReading reading)
+        private void SensorReader_Tick(SensorReader reader, SensorData data)
         {
-            RHumi = String.Format(" Relative Humidity: {0:f2} % |", reading.Humidity);
-            RPres = String.Format(" Pressure: {0} hPa |", reading.Pressure);
-            RTemp = string.Format(" Temperature: {0:f2} °C |", reading.Temperature);
+            RHumi = String.Format(" Relative Humidity: {0:f2} % |", data.Humidity);
+            RPres = String.Format(" Pressure: {0} hPa |", data.Pressure);
+            RTemp = string.Format(" Temperature: {0:f2} °C |", data.Temperature);
         }
 
         private void btnBACK_Click(object sender, RoutedEventArgs e)

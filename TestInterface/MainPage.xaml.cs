@@ -41,31 +41,31 @@ namespace TestInterface
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            (Application.Current as TestInterface.App).SenseHatReader.Tick += SenseHatReaderTIck;
+            (Application.Current as TestInterface.App).SensorReader.Tick += SensorReader_Tick;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            (Application.Current as TestInterface.App).SenseHatReader.Tick -= SenseHatReaderTIck;
+            (Application.Current as TestInterface.App).SensorReader.Tick -= SensorReader_Tick;
         }
 
-        private void SenseHatReaderTIck(SenseHatReader reader, SenseHatReading reading)
+        private void SensorReader_Tick(SensorReader reader, SensorData data)
         {
             //Button Value
-            btnHumidity.Content = String.Format("Relative\nHumidity:\n{0:f2} % ", reading.Humidity);
+            btnHumidity.Content = String.Format("Relative\nHumidity:\n{0:f2} % ", data.Humidity);
             //List Value
-            RHumi = String.Format(" Relative Humidity: {0:f2} % |", reading.Humidity);
+            RHumi = String.Format(" Relative Humidity: {0:f2} % |", data.Humidity);
 
             //Button Value
-            btnPressure.Content = String.Format("Pressure:\n{0:f2} hPa ", reading.Pressure);
+            btnPressure.Content = String.Format("Pressure:\n{0:f2} hPa ", data.Pressure);
             //List Value
-            RPres = String.Format(" Pressure: {0:f2} hPa |", reading.Pressure);
+            RPres = String.Format(" Pressure: {0:f2} hPa |", data.Pressure);
 
             //Button Value
-            btnTemp.Content = string.Format("Temperature:\n{0:f2} °C", reading.Temperature);
+            btnTemp.Content = string.Format("Temperature:\n{0:f2} °C", data.Temperature);
             //List Value
-            RTemp = string.Format(" Temperature: {0:f2} °C |", reading.Temperature);
+            RTemp = string.Format(" Temperature: {0:f2} °C |", data.Temperature);
         }
 
         private void btnTemp_Click(object sender, RoutedEventArgs e)

@@ -37,18 +37,18 @@ namespace TestInterface
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            (Application.Current as TestInterface.App).SenseHatReader.Tick += SenseHatReaderTIck;
+            (Application.Current as TestInterface.App).SensorReader.Tick += SensorReader_Tick;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            (Application.Current as TestInterface.App).SenseHatReader.Tick -= SenseHatReaderTIck;
+            (Application.Current as TestInterface.App).SensorReader.Tick -= SensorReader_Tick;
         }
 
-        private void SenseHatReaderTIck(SenseHatReader reader, SenseHatReading reading)
+        private void SensorReader_Tick(SensorReader reader, SensorData data)
         {
-            var press = reading.Pressure;
+            var press = data.Pressure;
             btnCurrentPress.Content = String.Format("Pressure:\n{0:f2} hPa", press);
 
             if (PressNdTime.Count >= 15)

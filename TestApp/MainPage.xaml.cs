@@ -23,17 +23,17 @@ namespace TestApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private SenseHatReader senseHatReader = new SenseHatReader(1000, 10);
+        private SensorReader sensorReader = new DummyReader(1000, 15);
 
         public MainPage()
         {
             this.InitializeComponent();
-            senseHatReader.Init();
+            sensorReader.Init();
         }
 
-        private void SenseHatTick(SenseHatReader reader, SenseHatReading reading)
+        private void SensorReader_Tick(SensorReader reader, SensorData data)
         {
-            listBox.ItemsSource = reader.Readings.Select(r =>
+            listBox.ItemsSource = reader.Data.Select(r =>
                 String.Format("{0:F2} C, {1:F2} %, {2:F3} hPa",
                 r.Temperature, r.Humidity, r.Pressure));
         }
@@ -41,13 +41,13 @@ namespace TestApp
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            senseHatReader.Tick += SenseHatTick;
+            sensorReader.Tick += SensorReader_Tick;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            senseHatReader.Tick -= SenseHatTick;
+            sensorReader.Tick -= SensorReader_Tick;
         }
     }
 }
