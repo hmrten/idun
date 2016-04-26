@@ -25,7 +25,7 @@ namespace TestInterface
     /// </summary>
     public sealed partial class PressurePage : Page
     {
-        private Queue<PressControl> PressNdTime = new Queue<PressControl>();
+        //private Queue<PressControl> PressNdTime = new Queue<PressControl>();
 
         public PressurePage()
         {
@@ -51,14 +51,14 @@ namespace TestInterface
             var press = data.Pressure;
             btnCurrentPress.Content = String.Format("Pressure:\n{0:f2} hPa", press);
 
-            if (PressNdTime.Count >= 15)
-            {
-                PressNdTime.Dequeue();
+            var items = from r in reader.Data
+                        select new
+                        {
+                            Pressure = r.Pressure,
+                            DTReading = r.Date.ToString("HH:mm:ss")
+                        };
 
-            }
-            PressNdTime.Enqueue(new PressControl { Pressure = double.Parse(press.ToString()), DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
-
-            (PressChart.Series[0] as LineSeries).ItemsSource = PressNdTime.ToList();
+            (PressChart.Series[0] as LineSeries).ItemsSource = items;
         }
 
         private void btnBACK_Click(object sender, RoutedEventArgs e)
