@@ -248,8 +248,6 @@ namespace LedEditor
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            var ledImage = FindName("ledImage") as Image;
-
             ledImage.PointerMoved += LedImage_PointerMoved;
             ledImage.PointerPressed += LedImage_PointerPressed;
 
@@ -257,9 +255,6 @@ namespace LedEditor
             ledImage.Source = ledBitmap.Sink;
 
             //Draw();
-
-            var ledGrid = FindName("ledGrid") as Grid;
-            //ledGrid.PointerMoved += LedGrid_PointerMoved;
 
             CompositionTarget.Rendering += CompositionTarget_Rendering;
         }
