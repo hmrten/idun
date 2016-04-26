@@ -19,6 +19,7 @@ namespace SenseHat
         {
             var data = new SensorData
             {
+                Date = DateTime.Now,
                 Temperature = 30.0f + (float)(rnd.NextDouble() * 5.0),
                 Humidity = 40.0f + (float)(rnd.NextDouble() * 2.0),
                 Pressure = 1010.0f + (float)(rnd.NextDouble() * 5.0),

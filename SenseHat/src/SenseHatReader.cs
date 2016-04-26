@@ -33,6 +33,7 @@ namespace SenseHat
         {
             var data = new SensorData
             {
+                Date = DateTime.Now,
                 Temperature = hts221.ReadTemperature(),
                 Humidity = hts221.ReadHumidity(),
                 Pressure = lps25h.ReadPressure(),

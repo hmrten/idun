@@ -59,12 +59,12 @@ namespace TestInterface
             //}
             //HumNdTime.Enqueue(new HumControl { Humidity = double.Parse(humi.ToString()), DTReading = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") });
 
-            var now = DateTime.Now;
+            //var now = DateTime.Now;
             var items = from r in reader.Data
                         select new
                         {
                             Humidity = r.Humidity,
-                            DTReading = now.ToString("HH:mm:ss")
+                            DTReading = r.Date.ToString("HH:mm:ss")
                         };
 
             (HumChart.Series[0] as LineSeries).ItemsSource = items;

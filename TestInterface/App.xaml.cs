@@ -42,8 +42,11 @@ namespace TestInterface
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-
+#if ARM
+            SensorReader = new SenseHatReader(1000, 15);
+#else
             SensorReader = new DummyReader(1000, 15);
+#endif
             SensorReader.Init();
 
             MaxNrBfrMaintenance = 1;

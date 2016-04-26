@@ -23,11 +23,16 @@ namespace TestApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private SensorReader sensorReader = new DummyReader(1000, 15);
+        private SensorReader sensorReader;
 
         public MainPage()
         {
             this.InitializeComponent();
+#if ARM
+            sensorReader = new SenseHatReader(1000, 15);
+#else
+            sensorReader = new DummyReader(1000, 15);
+#endif
             sensorReader.Init();
         }
 
