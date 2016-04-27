@@ -36,5 +36,10 @@ namespace TestInterface
         {
             this.Frame.Navigate(typeof(SpeechSynth), null);
         }
+
+        private void btnLED_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(ALEDC), null);
+        }
     }
 }

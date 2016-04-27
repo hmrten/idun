@@ -78,7 +78,10 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid Background="Black" Height="480" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="800">
+    <Grid Height="480" VerticalAlignment="Center" HorizontalAlignment="Center" Width="800">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/gray_texture_blue_background_cubes_squares_hd-wallpaper-238947.jpg"/>
+        </Grid.Background>
         <Button x:Name="btnPressure" Margin="565,140,0,215" VerticalAlignment="Stretch" Width="110" Foreground="White" Background="#FF68217A" FontWeight="Bold" BorderBrush="{x:Null}" Click="btnPressure_Click" Height="125">
             <TextBlock TextWrapping="Wrap">Initializing Pressure Reading</TextBlock>
         </Button>
@@ -102,7 +105,7 @@
                 </LinearGradientBrush>
             </ProgressBar.Foreground>
         </ProgressBar>
-        <ListView Name="ListViewTest" HorizontalAlignment="Center" Width="525" Height="220" VerticalAlignment="Top" Foreground="White" Margin="10,195,265,0" Loaded="onLoadList" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.ZoomMode="Enabled" SelectionMode="None" IsSwipeEnabled="False" HorizontalContentAlignment="Stretch" IsMultiSelectCheckBoxEnabled="False">
+        <ListView Name="ListViewTest" HorizontalAlignment="Center" Width="525" Height="220" VerticalAlignment="Top" Foreground="White" Margin="10,195,265,0" Loaded="onLoadList" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.ZoomMode="Enabled" SelectionMode="None" IsSwipeEnabled="False" HorizontalContentAlignment="Stretch" IsMultiSelectCheckBoxEnabled="False" Background="#7F68217A">
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <Grid Width="Auto" VerticalAlignment="Center" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.ZoomMode="Enabled" FlowDirection="LeftToRight" Padding="1" BorderThickness="0,1,0,1" BorderBrush="White">

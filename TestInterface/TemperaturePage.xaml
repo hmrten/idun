@@ -10,7 +10,10 @@
 
     mc:Ignorable="d">
 
-    <Grid Background="Black" Height="480" VerticalAlignment="Top" HorizontalAlignment="Left" Width="800" IsRightTapEnabled="False" IsHoldingEnabled="False">
+    <Grid Height="480" VerticalAlignment="Center" HorizontalAlignment="Center" Width="800" IsRightTapEnabled="False" IsHoldingEnabled="False">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/gray_texture_blue_background_cubes_squares_hd-wallpaper-238947.jpg"/>
+        </Grid.Background>
 
         <Button x:Name="btnDisplayGraph" Margin="240,344,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
             <TextBlock TextWrapping="Wrap">Display Graph</TextBlock>
@@ -22,13 +25,13 @@
         <Button x:Name="btnCurrentTemp" Margin="10,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
             <TextBlock TextWrapping="Wrap">Initializing Temperature Reading</TextBlock>
         </Button>
-        <StackPanel >
-            <Charting:Chart x:Name="TempChart" Height="310" Margin="10,10,10,0" BorderBrush="White" Foreground="White">
+        <StackPanel Margin="0,0,0,140" >
+            <Charting:Chart x:Name="TempChart" Height="310" Margin="10,10,10,0" BorderBrush="White" Foreground="White" Background="#7F68217A">
 
                 <Charting:LineSeries Title="" Margin="0" IndependentValuePath="DTReading" DependentValuePath="Temperature" IsSelectionEnabled="False" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False" >
                     <Charting:LineSeries.TransitionEasingFunction>
                         <BounceEase EasingMode="EaseInOut" />
-                        
+
                     </Charting:LineSeries.TransitionEasingFunction>
                 </Charting:LineSeries>
                 <Charting:Chart.Palette>
@@ -61,7 +64,7 @@
                 Property="Fill"
                 Value="{StaticResource Background}" />
                             </Style>
-                            
+
                         </ResourceDictionary>
                     </Charting:ResourceDictionaryCollection>
                 </Charting:Chart.Palette>

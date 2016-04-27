@@ -8,7 +8,10 @@
     xmlns:oks="using:OnScreenKeyboard"
     mc:Ignorable="d">
 
-    <Grid Background="Black">
+    <Grid Width="800" Height="480" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/gray_texture_blue_background_cubes_squares_hd-wallpaper-238947.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>

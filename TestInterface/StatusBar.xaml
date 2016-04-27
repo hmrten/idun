@@ -7,14 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="Black" Height="480" VerticalAlignment="Top" HorizontalAlignment="Left" Width="800">
+    <Grid Height="480" VerticalAlignment="Center" HorizontalAlignment="Center" Width="800">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/gray_texture_blue_background_cubes_squares_hd-wallpaper-238947.jpg"/>
+        </Grid.Background>
         <TextBlock x:Name="textBlockTitle" Height="125" Margin="240,345,125,0" TextWrapping="Wrap" Text="IDUN" VerticalAlignment="Top" Foreground="#FFF1F1F1" FontSize="100" TextAlignment="Center" CharacterSpacing="300" SelectionHighlightColor="White" FontWeight="Bold"/>
         <Button x:Name="btnBACK" Content="Return" Margin="680,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnBACK_Click"/>
         <Button x:Name="btnSetNrOfRuns" Content="Settings" Margin="10,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnSetNrOfRuns_Click"/>
         <Button x:Name="btnCurrUsage" Margin="125,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Loaded="onLoadCatchCurrUsage">
             <TextBlock TextWrapping="Wrap">Catching Current Usage Number</TextBlock>
         </Button>
-        <ListView Name="ListViewTest" HorizontalAlignment="Right" Width="780" Height="310" VerticalAlignment="Top" Foreground="White" Margin="0,20,10,0" Loaded="onLoadList" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.ZoomMode="Enabled" IsMultiSelectCheckBoxEnabled="False" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False" AutomationProperties.LiveSetting="Assertive" SelectionMode="None">
+        <ListView Name="ListViewTest" HorizontalAlignment="Right" Width="780" Height="310" VerticalAlignment="Top" Foreground="White" Margin="0,20,10,0" Loaded="onLoadList" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.ZoomMode="Enabled" IsMultiSelectCheckBoxEnabled="False" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False" AutomationProperties.LiveSetting="Assertive" SelectionMode="None" Background="#7F68217A">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.ZoomMode="Enabled" BorderBrush="White" BorderThickness="0,1,0,1" >

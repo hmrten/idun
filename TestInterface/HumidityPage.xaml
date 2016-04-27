@@ -9,7 +9,10 @@
     x:Class="TestInterface.HumidityPage"
     mc:Ignorable="d">
 
-    <Grid Background="Black" Height="480" VerticalAlignment="Top" HorizontalAlignment="Left" Width="800">
+    <Grid Height="480" VerticalAlignment="Center" HorizontalAlignment="Center" Width="800">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/gray_texture_blue_background_cubes_squares_hd-wallpaper-238947.jpg"/>
+        </Grid.Background>
         <Button x:Name="btnDisplayGraph" Margin="240,344,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}">
             <TextBlock TextWrapping="Wrap" Text="Display Graph" FontSize="14"/>
         </Button>
@@ -20,8 +23,11 @@
         <Button x:Name="btnCurrentHumi" Margin="10,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}">
             <TextBlock TextWrapping="Wrap" FontSize="14">Initializing Humidity Reading</TextBlock>
         </Button>
-        <StackPanel Margin="0,2,0,0" >
-            <Charting:Chart x:Name="HumChart" Height="310" Margin="10,10,10,0" BorderBrush="White" Foreground="White">
+        <StackPanel Margin="0,2,0,135" >
+            <StackPanel.Background>
+                <ImageBrush Stretch="Fill"/>
+            </StackPanel.Background>
+            <Charting:Chart x:Name="HumChart" Height="310" Margin="10,10,10,0" BorderBrush="White" Foreground="White" Background="#7F68217A">
 
                 <Charting:Chart.Palette>
                     <Charting:ResourceDictionaryCollection>
