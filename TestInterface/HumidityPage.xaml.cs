@@ -51,6 +51,7 @@ namespace TestInterface
             var humi = data.Humidity;
             btnCurrentHumi.Content = String.Format("Relative\nHumidity:\n{0:f2} %", humi);
 
+
             //Self-truncating Stack List
             //if (HumNdTime.Count >= 15)
             //{
@@ -66,6 +67,14 @@ namespace TestInterface
                             Humidity = r.Humidity,
                             DTReading = r.Date.ToString("HH:mm:ss")
                         };
+
+            foreach (var ihumi in items)
+            {
+                (Application.Current as TestInterface.App).MaxHumi = ihumi.Humidity > (Application.Current as TestInterface.App).MaxHumi ? ihumi.Humidity : (Application.Current as TestInterface.App).MaxHumi;
+                (Application.Current as TestInterface.App).MinHumi = ihumi.Humidity < (Application.Current as TestInterface.App).MinHumi ? ihumi.Humidity : (Application.Current as TestInterface.App).MinHumi;
+            }
+            btnMaxHumi.Content = "Maximal\nMeasured\nHumidity:\n" + string.Format("{0:f2} %", (Application.Current as TestInterface.App).MaxHumi);
+            btnMinHumi.Content = "Minimal\nMeasured\nHumidity:\n" + string.Format("{0:f2} %", (Application.Current as TestInterface.App).MinHumi);
 
             (HumChart.Series[0] as LineSeries).ItemsSource = items;
         }

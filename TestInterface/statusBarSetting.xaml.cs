@@ -52,9 +52,9 @@ namespace TestInterface
 
         private void SensorReader_Tick(SensorReader reader, SensorData data)
         {
-            RHumi = String.Format(" Relative Humidity: {0:f2} % |", data.Humidity);
-            RPres = String.Format(" Pressure: {0} hPa |", data.Pressure);
-            RTemp = string.Format(" Temperature: {0:f2} °C |", data.Temperature);
+            RHumi = String.Format(" Relative Humidity: {0:f2} % ", data.Humidity);
+            RPres = String.Format(" Pressure: {0} hPa ", data.Pressure);
+            RTemp = string.Format(" Temperature: {0:f2} °C ", data.Temperature);
         }
 
         private void btnBACK_Click(object sender, RoutedEventArgs e)
@@ -98,8 +98,15 @@ namespace TestInterface
         {
             (Application.Current as TestInterface.App).MaxNrBfrMaintenance = int.Parse(MaxServiceNr.Text);
             string Datum = DateTime.Now.Year.ToString("0000") + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00") + " on " + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00");
+            string maxtemp = " Maximal Temperature: " + string.Format("{0:f2} °C", (Application.Current as TestInterface.App).MaxTemp);
+            string mintemp = " Minimal Temperature: " + string.Format("{0:f2} °C", (Application.Current as TestInterface.App).MinTemp);
+            string maxhumi = " Maximal Humidity: " + string.Format("{0:f2} %", (Application.Current as TestInterface.App).MaxHumi);
+            string minhumi = " Minimal Humidity: " + string.Format("{0:f2} %", (Application.Current as TestInterface.App).MinHumi);
+            string maxpres = " Maximal Pressure: " + string.Format("{0:f2} hPa", (Application.Current as TestInterface.App).MaxPres);
+            string minpres = " Minimal Pressure: " + string.Format("{0:f2} hPa", (Application.Current as TestInterface.App).MinPres);
+
             if (textBoxNote.Text=="" || textBoxNote.Text == null || textBoxNote.Text == "Enter your note here.") { textBoxNote.Text = " No Entry on Note. Automatic Insert. Maximum calls changed."; }
-            (Application.Current as TestInterface.App).ReportForMain.Insert(0, new Report.ReportList { DTofServiceCall = Datum, SCHumidity = RHumi, SCPressure = RPres, SCTemperature = RTemp, MaxNr = " | Maintenance After " + (Application.Current as TestInterface.App).currentNrofServiceCalls.ToString() + " Run(s) |", Note ="Note: " + textBoxNote.Text });
+            (Application.Current as TestInterface.App).ReportForMain.Insert(0, new Report.ReportList { DTofServiceCall = Datum, SCHumidity = RHumi, SCPressure = RPres, SCTemperature = RTemp, MaxNr = "  Maintenance After " + (Application.Current as TestInterface.App).currentNrofServiceCalls.ToString() + " Run(s) ", MaxTemperature = maxtemp, MinTemperature = mintemp, MaxPressure = maxpres, MinPressure = minpres, MaxHumidity = maxhumi, MinHumidity = minhumi, Note =" Note: " + textBoxNote.Text });
             (Application.Current as TestInterface.App).currentNrofServiceCalls = 0;
             this.Frame.Navigate(typeof(StatusBar), null);
         }

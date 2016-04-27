@@ -58,6 +58,16 @@ namespace TestInterface
                             DTReading = r.Date.ToString("HH:mm:ss")
                         };
 
+            foreach (var pres in items)
+            {
+                (Application.Current as TestInterface.App).MaxPres = pres.Pressure > (Application.Current as TestInterface.App).MaxPres ? pres.Pressure : (Application.Current as TestInterface.App).MaxPres;
+                (Application.Current as TestInterface.App).MinPres = pres.Pressure < (Application.Current as TestInterface.App).MinPres ? pres.Pressure : (Application.Current as TestInterface.App).MinPres;
+            }
+
+            btnMaxPres.Content = "Maximal\nMeasured\nPressure:\n" + string.Format("{0:f2} hPa", (Application.Current as TestInterface.App).MaxPres);
+            btnMinPres.Content = "Minimal\nMeasured\nPressure:\n" + string.Format("{0:f2} hPa", (Application.Current as TestInterface.App).MinPres);
+
+
             (PressChart.Series[0] as LineSeries).ItemsSource = items;
         }
 

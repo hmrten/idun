@@ -14,5 +14,11 @@ namespace TestInterface.Report
         public string SCTemperature { get; set; }
         public string SCHumidity { get; set; }
         public string Note { get; set; }
+        public string MaxHumidity { get; set; }
+        public string MinHumidity { get; set; }
+        public string MaxPressure { get; set; }
+        public string MinPressure { get; set; }
+        public string MaxTemperature { get; set; }
+        public string MinTemperature { get; set; }
     }
 }

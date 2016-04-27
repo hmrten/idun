@@ -15,11 +15,11 @@
             <ImageBrush Stretch="Fill" ImageSource="Assets/gray_texture_blue_background_cubes_squares_hd-wallpaper-238947.jpg"/>
         </Grid.Background>
 
-        <Button x:Name="btnDisplayGraph" Margin="240,344,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
-            <TextBlock TextWrapping="Wrap">Display Graph</TextBlock>
+        <Button x:Name="btnMinVal" Margin="240,344,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
+            <TextBlock TextWrapping="Wrap" Text="Initializing Minimal Measured Temperature"/>
         </Button>
-        <Button x:Name="btnMUnit" Margin="125,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Loaded="onLoadMUnitBtn" FontSize="14">
-            <TextBlock TextWrapping="Wrap" Margin="-2,0,0,0">Initializing Measurement Unit</TextBlock>
+        <Button x:Name="btnMaxVal" Margin="125,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
+            <TextBlock TextWrapping="Wrap" Margin="-2,0,0,0" Text="Initializing Maximal Measured Temperature"/>
         </Button>
         <Button x:Name="btnBACK" Content="Return" Margin="680,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnBACK_Click" FontSize="14"/>
         <Button x:Name="btnCurrentTemp" Margin="10,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">

@@ -16,10 +16,12 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnDisplayGraph" Margin="125,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
-            <TextBlock TextWrapping="Wrap">Display Graph</TextBlock>
+        <Button x:Name="btnMaxPres" Margin="125,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
+            <TextBlock TextWrapping="Wrap">Initializing Maximal Measured Pressure</TextBlock>
         </Button>
-        <Button x:Name="btnMUnit" Content="Measurement Unit [Pa / tor / atm] " Margin="240,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14" />
+        <Button x:Name="btnMinPres" Margin="240,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
+            <TextBlock TextWrapping="Wrap">Initializing Minimal Measured Pressure</TextBlock>
+        </Button>
         <Button x:Name="btnBACK" Content="Return" Margin="680,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnBACK_Click" FontSize="14"/>
         <Button x:Name="btnCurrentPress" Margin="10,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" FontSize="14">
             <TextBlock TextWrapping="Wrap">Initializing Pressure Reading</TextBlock>

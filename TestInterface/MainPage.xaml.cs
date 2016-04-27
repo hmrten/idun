@@ -53,19 +53,28 @@ namespace TestInterface
         private void SensorReader_Tick(SensorReader reader, SensorData data)
         {
             //Button Value
-            btnHumidity.Content = String.Format("Relative\nHumidity:\n{0:f2} % ", data.Humidity);
+            btnHumidity.Content = String.Format("Relative\nHumidity:\n{0:f2} %", data.Humidity);
             //List Value
-            RHumi = String.Format(" Relative Humidity: {0:f2} % |", data.Humidity);
+            RHumi = String.Format(" Relative Humidity: {0:f2} % ", data.Humidity);
 
             //Button Value
-            btnPressure.Content = String.Format("Pressure:\n{0:f2} hPa ", data.Pressure);
+            btnPressure.Content = String.Format("Pressure:\n{0:f2} hPa", data.Pressure);
             //List Value
-            RPres = String.Format(" Pressure: {0:f2} hPa |", data.Pressure);
+            RPres = String.Format(" Pressure: {0:f2} hPa ", data.Pressure);
 
             //Button Value
             btnTemp.Content = string.Format("Temperature:\n{0:f2} °C", data.Temperature);
             //List Value
-            RTemp = string.Format(" Temperature: {0:f2} °C |", data.Temperature);
+            RTemp = string.Format(" Temperature: {0:f2} °C ", data.Temperature);
+
+            (Application.Current as TestInterface.App).MaxTemp = data.Temperature > (Application.Current as TestInterface.App).MaxTemp ? data.Temperature : (Application.Current as TestInterface.App).MaxTemp;
+            (Application.Current as TestInterface.App).MinTemp = data.Temperature < (Application.Current as TestInterface.App).MinTemp ? data.Temperature : (Application.Current as TestInterface.App).MinTemp;
+            (Application.Current as TestInterface.App).MaxPres = data.Pressure > (Application.Current as TestInterface.App).MaxPres ? data.Pressure : (Application.Current as TestInterface.App).MaxPres;
+            (Application.Current as TestInterface.App).MinPres = data.Pressure < (Application.Current as TestInterface.App).MinPres ? data.Pressure : (Application.Current as TestInterface.App).MinPres;
+            (Application.Current as TestInterface.App).MaxHumi = data.Humidity > (Application.Current as TestInterface.App).MaxHumi ? data.Humidity : (Application.Current as TestInterface.App).MaxHumi;
+            (Application.Current as TestInterface.App).MinHumi = data.Humidity < (Application.Current as TestInterface.App).MinHumi ? data.Humidity : (Application.Current as TestInterface.App).MinHumi;
+
+
         }
 
         private void btnTemp_Click(object sender, RoutedEventArgs e)
@@ -102,7 +111,13 @@ namespace TestInterface
             {
                 //Global List with Service Calls
                 string Datum = DateTime.Now.Year.ToString("0000") + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00")+" on "+DateTime.Now.Hour.ToString("00")+":"+DateTime.Now.Minute.ToString("00")+":"+DateTime.Now.Second.ToString("00");
-                (Application.Current as TestInterface.App).ReportForMain.Insert(0, new Report.ReportList { DTofServiceCall = Datum, SCHumidity = RHumi, SCPressure = RPres, SCTemperature= RTemp, MaxNr = " | Maintenance After "+(Application.Current as TestInterface.App).currentNrofServiceCalls.ToString()+" Run(s) |", Note=" Note: Automatic Insertion |" });
+                string maxtemp =" Maximal Temperature: "+string.Format("{0:f2} °C",(Application.Current as TestInterface.App).MaxTemp);
+                string mintemp =" Minimal Temperature: " + string.Format("{0:f2} °C", (Application.Current as TestInterface.App).MinTemp);
+                string maxhumi =" Maximal Humidity: " + string.Format("{0:f2} %", (Application.Current as TestInterface.App).MaxHumi);
+                string minhumi =" Minimal Humidity: " + string.Format("{0:f2} %", (Application.Current as TestInterface.App).MinHumi);
+                string maxpres =" Maximal Pressure: " + string.Format("{0:f2} hPa", (Application.Current as TestInterface.App).MaxPres);
+                string minpres =" Minimal Pressure: " + string.Format("{0:f2} hPa", (Application.Current as TestInterface.App).MinPres);
+                (Application.Current as TestInterface.App).ReportForMain.Insert(0, new Report.ReportList { DTofServiceCall = Datum, SCHumidity = RHumi, SCPressure = RPres, SCTemperature= RTemp, MaxNr = " Maintenance After "+(Application.Current as TestInterface.App).currentNrofServiceCalls.ToString()+" Run(s) ",MaxTemperature=maxtemp,MinTemperature=mintemp,MaxPressure=maxpres,MinPressure=minpres,MaxHumidity=maxhumi,MinHumidity=minhumi, Note=" Note: Automatic Insertion " });
                 (Application.Current as TestInterface.App).currentNrofServiceCalls = 0;
                 
                 //Local List with Service Calls

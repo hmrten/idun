@@ -30,6 +30,15 @@ namespace TestInterface
         public int MaxNrBfrMaintenance;
         public int currentNrofServiceCalls;
 
+        public float MaxTemp;
+        public float MinTemp;
+
+        public float MaxHumi;
+        public float MinHumi;
+
+        public float MaxPres;
+        public float MinPres;
+
         public ObservableCollection<ReportList> ReportForMain = new ObservableCollection<ReportList>();
 
         public SensorReader SensorReader { get; private set; }
@@ -51,6 +60,13 @@ namespace TestInterface
 
             MaxNrBfrMaintenance = 1;
             currentNrofServiceCalls = 0;
+
+            MaxTemp = float.NegativeInfinity;
+            MinTemp = float.PositiveInfinity;
+            MaxHumi = float.NegativeInfinity;
+            MinHumi = float.PositiveInfinity;
+            MaxPres = float.NegativeInfinity;
+            MinPres = float.PositiveInfinity;
         }
 
         /// <summary>

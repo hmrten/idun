@@ -30,16 +30,14 @@ namespace TestInterface
     public sealed partial class TemperaturePage : Page
     {
         //private Queue<TempControl> TempNdTime = new Queue<TempControl>();
-        private string TempUnit;
         public double ConvertedTemp;
-
+  
 
         public TemperaturePage()
         {
             this.InitializeComponent();
             TempChart.LegendItems.Clear();
 
-            TempUnit = "°C";
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -59,6 +57,11 @@ namespace TestInterface
             ConvertedTemp = data.Temperature;
             btnCurrentTemp.Content = string.Format("Temperature:\n{0:f2} °C", ConvertedTemp);
 
+      
+
+
+
+
             //if (TempNdTime.Count >= 15)
             //{
             //    TempNdTime.Dequeue();
@@ -73,6 +76,13 @@ namespace TestInterface
                             Temperature = r.Temperature,
                             DTReading = r.Date.ToString("HH:mm:ss")
                         };
+            foreach (var temp in items)
+            {
+                (Application.Current as TestInterface.App).MaxTemp = temp.Temperature > (Application.Current as TestInterface.App).MaxTemp ? temp.Temperature : (Application.Current as TestInterface.App).MaxTemp;
+                (Application.Current as TestInterface.App).MinTemp = temp.Temperature < (Application.Current as TestInterface.App).MinTemp ? temp.Temperature : (Application.Current as TestInterface.App).MinTemp;
+            }
+            btnMaxVal.Content = "Maximal\nMeasured\nTemperature:\n" + string.Format("{0:f2} °C", (Application.Current as TestInterface.App).MaxTemp);
+            btnMinVal.Content="Minimal\nMeasured\nTemperature:\n" + string.Format("{0:f2} °C", (Application.Current as TestInterface.App).MinTemp);
 
             (TempChart.Series[0] as LineSeries).ItemsSource = items;
         }
@@ -82,10 +92,6 @@ namespace TestInterface
             this.Frame.Navigate(typeof(MainPage), null);
         }
 
-        private void onLoadMUnitBtn(object sender, RoutedEventArgs e)
-        {
-            btnMUnit.Content = "Measuring\nUnit:\n" + TempUnit;
-        }
 
 
 
