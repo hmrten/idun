@@ -67,12 +67,14 @@ namespace TestInterface
             //List Value
             RTemp = string.Format(" Temperature: {0:f2} °C ", data.Temperature);
 
-            (Application.Current as TestInterface.App).MaxTemp = data.Temperature > (Application.Current as TestInterface.App).MaxTemp ? data.Temperature : (Application.Current as TestInterface.App).MaxTemp;
-            (Application.Current as TestInterface.App).MinTemp = data.Temperature < (Application.Current as TestInterface.App).MinTemp ? data.Temperature : (Application.Current as TestInterface.App).MinTemp;
-            (Application.Current as TestInterface.App).MaxPres = data.Pressure > (Application.Current as TestInterface.App).MaxPres ? data.Pressure : (Application.Current as TestInterface.App).MaxPres;
-            (Application.Current as TestInterface.App).MinPres = data.Pressure < (Application.Current as TestInterface.App).MinPres ? data.Pressure : (Application.Current as TestInterface.App).MinPres;
-            (Application.Current as TestInterface.App).MaxHumi = data.Humidity > (Application.Current as TestInterface.App).MaxHumi ? data.Humidity : (Application.Current as TestInterface.App).MaxHumi;
-            (Application.Current as TestInterface.App).MinHumi = data.Humidity < (Application.Current as TestInterface.App).MinHumi ? data.Humidity : (Application.Current as TestInterface.App).MinHumi;
+            var AppCast = (Application.Current as TestInterface.App);
+
+            AppCast.MaxTemp = Math.Max(data.Temperature, AppCast.MaxTemp);
+            AppCast.MinTemp = Math.Min(data.Temperature, AppCast.MinTemp);
+            AppCast.MaxPres = Math.Max(data.Pressure, AppCast.MaxPres);
+            AppCast.MinPres = Math.Min(data.Pressure, AppCast.MinPres);
+            AppCast.MaxHumi = Math.Max(data.Humidity, AppCast.MaxHumi);
+            AppCast.MinHumi = Math.Min(data.Humidity, AppCast.MinHumi);
 
 
         }

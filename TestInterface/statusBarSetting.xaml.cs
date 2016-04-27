@@ -98,6 +98,7 @@ namespace TestInterface
         {
             (Application.Current as TestInterface.App).MaxNrBfrMaintenance = int.Parse(MaxServiceNr.Text);
             string Datum = DateTime.Now.Year.ToString("0000") + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00") + " on " + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00");
+
             string maxtemp = " Maximal Temperature: " + string.Format("{0:f2} °C", (Application.Current as TestInterface.App).MaxTemp);
             string mintemp = " Minimal Temperature: " + string.Format("{0:f2} °C", (Application.Current as TestInterface.App).MinTemp);
             string maxhumi = " Maximal Humidity: " + string.Format("{0:f2} %", (Application.Current as TestInterface.App).MaxHumi);
