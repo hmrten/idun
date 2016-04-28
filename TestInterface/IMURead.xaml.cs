@@ -41,22 +41,23 @@ namespace TestInterface
 
         }
 
+
+
         private void UpdateValues()
         {
             ImuSensorData imuSensorData = _sensorThread.GetImuSensorData();
 
             ImuInitiated.Text = imuSensorData.Initiated ? "Yes" : "No";
-            ImuError.Text = imuSensorData.ErrorMessage;
-            ImuSampleRate.Text = imuSensorData.SampleRate.ToString();
+
+         
             ImuGyro.Text = ReadingToString(imuSensorData.Readings.GyroValid, imuSensorData.Readings.Gyro, false, "radians/s");
             ImuAccel.Text = ReadingToString(imuSensorData.Readings.AccelerationValid, imuSensorData.Readings.Acceleration, false, "g");
             ImuMag.Text = ReadingToString(imuSensorData.Readings.MagneticFieldValid, imuSensorData.Readings.MagneticField, false, "\u00B5T");
-            ImuGyroBiasValid.Text = imuSensorData.GyroBiasValid ? "Yes" : "No";
-            ImuMagCalValid.Text = imuSensorData.MagCalValid ? "Yes" : "No";
 
             FusionPose.Text = ReadingToString(imuSensorData.Readings.FusionPoseValid, imuSensorData.Readings.FusionPose, true, "");
             FusionQPose.Text = ReadingToString(imuSensorData.Readings.FusionQPoseValid, imuSensorData.Readings.FusionQPose, "");
 
+            
         }
 
         private static string ReadingToString(bool valid, Vector3 vector, bool asDegrees, string unit)
@@ -72,6 +73,13 @@ namespace TestInterface
         private static string ReadingToString(bool valid, double value, string unit)
         {
             return !valid ? "N/A" : $"{value:0.0000} {unit}";
+        }
+
+        private void btnBACK_Click(object sender, RoutedEventArgs e)
+        {
+            _timer.Stop();
+            _sensorThread.Dispose();
+            this.Frame.Navigate(typeof(AdditionalApps), null);
         }
     }
 }

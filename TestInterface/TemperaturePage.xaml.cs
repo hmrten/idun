@@ -85,6 +85,7 @@ namespace TestInterface
             btnMinVal.Content="Minimal\nMeasured\nTemperature:\n" + string.Format("{0:f2} °C", (Application.Current as TestInterface.App).MinTemp);
 
             (TempChart.Series[0] as LineSeries).ItemsSource = items;
+
         }
 
         private void btnBACK_Click(object sender, RoutedEventArgs e)

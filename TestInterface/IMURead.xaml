@@ -11,16 +11,26 @@
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="Assets/gray_texture_blue_background_cubes_squares_hd-wallpaper-238947.jpg"/>
         </Grid.Background>
-        <TextBlock x:Name="ImuInitiated" HorizontalAlignment="Left" Margin="140,10,0,0" TextWrapping="Wrap" Text="ImuInitiated" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
-        <TextBlock x:Name="ImuError" HorizontalAlignment="Left" Height="33" Margin="140,51,0,0" TextWrapping="Wrap" Text="ImuError" VerticalAlignment="Top" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}" RenderTransformOrigin="0.737,0.457"/>
-        <TextBlock x:Name="ImuSampleRate" HorizontalAlignment="Left" Margin="140,89,0,0" TextWrapping="Wrap" Text="ImuSampleRate" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
-        <TextBlock x:Name="ImuGyro" HorizontalAlignment="Left" Margin="140,130,0,0" TextWrapping="Wrap" Text="ImuGyro" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
-        <TextBlock x:Name="ImuAccel" HorizontalAlignment="Left" Margin="140,171,0,0" TextWrapping="Wrap" Text="ImuAccel" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
-        <TextBlock x:Name="ImuMag" HorizontalAlignment="Left" Margin="140,212,0,0" TextWrapping="Wrap" Text="ImuMag" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
-        <TextBlock x:Name="ImuGyroBiasValid" HorizontalAlignment="Left" Margin="140,253,0,0" TextWrapping="Wrap" Text="ImuGyroBiasValid" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
-        <TextBlock x:Name="ImuMagCalValid" HorizontalAlignment="Left" Margin="140,294,0,0" TextWrapping="Wrap" Text="ImuMagCalValid" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
-        <TextBlock x:Name="FusionPose" HorizontalAlignment="Left" Margin="140,335,0,0" TextWrapping="Wrap" Text="FusionPose" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
-        <TextBlock x:Name="FusionQPose" HorizontalAlignment="Left" Margin="140,376,0,0" TextWrapping="Wrap" Text="FusionQPose" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <Rectangle Fill="#7F68217A" Margin="10,51,310,393"  ></Rectangle>
+        <Rectangle Fill="#7F68217A" Margin="13,376,310,68"  ></Rectangle>
+        <Rectangle Fill="#7F68217A" Margin="13,335,310,109"  ></Rectangle>
+        <Rectangle Fill="#7F68217A" Margin="10,212,310,232"  ></Rectangle>
+        <Rectangle Fill="#7F68217A" Margin="10,171,310,273"  ></Rectangle>
+        <Rectangle Fill="#7F68217A" Margin="10,130,310,314"  ></Rectangle>
+        <TextBlock x:Name="ImuInitiated" HorizontalAlignment="Left" Margin="138,51,0,0" TextWrapping="Wrap" Text="ImuInitiated" VerticalAlignment="Top" Height="36" Width="352" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="ImuGyro" HorizontalAlignment="Left" Margin="140,130,0,0" TextWrapping="Wrap" Text="ImuGyro" VerticalAlignment="Top" Height="36" Width="350" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+     
+        <TextBlock x:Name="ImuAccel" HorizontalAlignment="Left" Margin="140,171,0,0" TextWrapping="Wrap" Text="ImuAccel" VerticalAlignment="Top" Height="36" Width="350" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="ImuMag" HorizontalAlignment="Left" Margin="140,212,0,0" TextWrapping="Wrap" Text="ImuMag" VerticalAlignment="Top" Height="36" Width="350" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="FusionPose" HorizontalAlignment="Left" Margin="140,335,0,0" TextWrapping="Wrap" Text="FusionPose" VerticalAlignment="Top" Height="36" Width="350" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="FusionQPose" HorizontalAlignment="Left" Margin="140,376,0,0" TextWrapping="Wrap" Text="FusionQPose" VerticalAlignment="Top" Height="36" Width="350" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="36" Margin="13,51,0,0" TextWrapping="Wrap" Text="Initiated: " VerticalAlignment="Top" Width="125" Foreground="White" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Height="36" Margin="10,130,0,0" TextWrapping="Wrap" Text="Gyroscope:" VerticalAlignment="Top" Width="125" Foreground="White" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Height="36" Margin="10,171,0,0" TextWrapping="Wrap" Text="Acceleration:" VerticalAlignment="Top" Width="125" Foreground="White" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Height="36" Margin="10,212,0,0" TextWrapping="Wrap" Text="Magnetic Field:" VerticalAlignment="Top" Width="125" Foreground="White" FontWeight="Bold" LineHeight="6"/>
+        <TextBlock x:Name="textBlock_Copy7" HorizontalAlignment="Left" Height="36" Margin="10,335,0,0" TextWrapping="Wrap" Text="Fusion Pose:" VerticalAlignment="Top" Width="125" Foreground="White" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock_Copy8" HorizontalAlignment="Left" Height="36" Margin="10,376,0,0" TextWrapping="Wrap" Text="FusionQPose" VerticalAlignment="Top" Width="125" Foreground="White" FontWeight="Bold"/>
+        <Button x:Name="btnBACK" Content="Return" Margin="680,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnBACK_Click"/>
 
     </Grid>
 </Page>
