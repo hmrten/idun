@@ -1,4 +1,5 @@
 ﻿using SenseHat;
+using SenseHatIMU.src;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -43,6 +44,8 @@ namespace TestInterface
 
         public SensorReader SensorReader { get; private set; }
 
+
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -57,6 +60,9 @@ namespace TestInterface
             SensorReader = new DummyReader(1000, 15);
 #endif
             SensorReader.Init();
+
+
+   
 
             MaxNrBfrMaintenance = 1;
             currentNrofServiceCalls = 0;
@@ -139,5 +145,6 @@ namespace TestInterface
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
     }
 }

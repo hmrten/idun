@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="TestInterface.IMURead"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestInterface"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Width="800" Height="480" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/gray_texture_blue_background_cubes_squares_hd-wallpaper-238947.jpg"/>
+        </Grid.Background>
+        <TextBlock x:Name="ImuInitiated" HorizontalAlignment="Left" Margin="140,10,0,0" TextWrapping="Wrap" Text="ImuInitiated" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="ImuError" HorizontalAlignment="Left" Height="33" Margin="140,51,0,0" TextWrapping="Wrap" Text="ImuError" VerticalAlignment="Top" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}" RenderTransformOrigin="0.737,0.457"/>
+        <TextBlock x:Name="ImuSampleRate" HorizontalAlignment="Left" Margin="140,89,0,0" TextWrapping="Wrap" Text="ImuSampleRate" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="ImuGyro" HorizontalAlignment="Left" Margin="140,130,0,0" TextWrapping="Wrap" Text="ImuGyro" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="ImuAccel" HorizontalAlignment="Left" Margin="140,171,0,0" TextWrapping="Wrap" Text="ImuAccel" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="ImuMag" HorizontalAlignment="Left" Margin="140,212,0,0" TextWrapping="Wrap" Text="ImuMag" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="ImuGyroBiasValid" HorizontalAlignment="Left" Margin="140,253,0,0" TextWrapping="Wrap" Text="ImuGyroBiasValid" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="ImuMagCalValid" HorizontalAlignment="Left" Margin="140,294,0,0" TextWrapping="Wrap" Text="ImuMagCalValid" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="FusionPose" HorizontalAlignment="Left" Margin="140,335,0,0" TextWrapping="Wrap" Text="FusionPose" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+        <TextBlock x:Name="FusionQPose" HorizontalAlignment="Left" Margin="140,376,0,0" TextWrapping="Wrap" Text="FusionQPose" VerticalAlignment="Top" Height="36" Width="537" FontWeight="Bold" Foreground="White" SelectionHighlightColor="{x:Null}"/>
+
+    </Grid>
+</Page>

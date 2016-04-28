@@ -108,6 +108,9 @@
     <Compile Include="HumidityPage.xaml.cs">
       <DependentUpon>HumidityPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IMURead.xaml.cs">
+      <DependentUpon>IMURead.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="IMURead.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -217,6 +224,10 @@
     <ProjectReference Include="..\SenseHat\SenseHat.csproj">
       <Project>{6b3a4678-8f40-4b1f-8f26-7eaafd573961}</Project>
       <Name>SenseHat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SenseIMULib\SenseIMULib.csproj">
+      <Project>{A9689E99-CD7F-49F0-B7E7-35EFF7CE6002}</Project>
+      <Name>SenseIMULib</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

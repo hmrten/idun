@@ -41,5 +41,10 @@ namespace TestInterface
         {
             this.Frame.Navigate(typeof(ALEDC), null);
         }
+
+        private void btnMagnet_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(IMURead), null);
+        }
     }
 }
