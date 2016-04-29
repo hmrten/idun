@@ -129,7 +129,7 @@ namespace TestInterface
                 button.Content = "Service Called " + (Application.Current as TestInterface.App).ReportForMain.Count + " time(s)";
             }
             //Button with Current Calls Value
-            btnMCounter.Content = "Usage Calls:\n" + (Application.Current as TestInterface.App).currentNrofServiceCalls + "\nout of\n" + (Application.Current as TestInterface.App).MaxNrBfrMaintenance;
+            btnMCounter.Content = "Usage Calls:\n" + (Application.Current as TestInterface.App).currentNrofServiceCalls + "/" + (Application.Current as TestInterface.App).MaxNrBfrMaintenance;
 
             //Progress Bar
             int barMaxint = (Application.Current as TestInterface.App).MaxNrBfrMaintenance;
@@ -144,7 +144,7 @@ namespace TestInterface
 
         private void onLoadMCounter(object sender, RoutedEventArgs e)
         {
-            btnMCounter.Content = "Usage Calls:\n" + (Application.Current as TestInterface.App).currentNrofServiceCalls + "\nout of\n" + (Application.Current as TestInterface.App).MaxNrBfrMaintenance;
+            btnMCounter.Content = "Usage Calls:\n" + (Application.Current as TestInterface.App).currentNrofServiceCalls + "/" + (Application.Current as TestInterface.App).MaxNrBfrMaintenance;
         }
 
         private void barOnLoad(object sender, RoutedEventArgs e)

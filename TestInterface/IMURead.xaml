@@ -30,7 +30,7 @@
         <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Height="36" Margin="10,212,0,0" TextWrapping="Wrap" Text="Magnetic Field:" VerticalAlignment="Top" Width="125" Foreground="White" FontWeight="Bold" LineHeight="6"/>
         <TextBlock x:Name="textBlock_Copy7" HorizontalAlignment="Left" Height="36" Margin="10,335,0,0" TextWrapping="Wrap" Text="Fusion Pose:" VerticalAlignment="Top" Width="125" Foreground="White" FontWeight="Bold"/>
         <TextBlock x:Name="textBlock_Copy8" HorizontalAlignment="Left" Height="36" Margin="10,376,0,0" TextWrapping="Wrap" Text="FusionQPose" VerticalAlignment="Top" Width="125" Foreground="White" FontWeight="Bold"/>
-        <Button x:Name="btnBACK" Content="Return" Margin="680,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnBACK_Click"/>
+        <Button x:Name="btnBACK" Content="Return" Margin="664,345,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnBACK_Click"/>
 
     </Grid>
 </Page>
