@@ -135,7 +135,7 @@
             <Button x:Name="btnHumidity" Margin="0" VerticalAlignment="Stretch" Foreground="White" Background="#FF68217A" FontWeight="Bold" BorderBrush="{x:Null}" Click="btnHumidity_Click" HorizontalAlignment="Stretch" d:LayoutOverrides="TopPosition, BottomPosition" BorderThickness="0" MinWidth="125" MinHeight="110" MaxWidth="250" MaxHeight="300">
                 <TextBlock TextWrapping="Wrap" Margin="0" FontSize="13">Initializing Humidity Reading</TextBlock>
             </Button>
-            <Button Margin="0" VerticalAlignment="Stretch" Foreground="White" Background="#FF68217A" FontWeight="Bold" BorderBrush="{x:Null}" Click="btnTemp_Click" HorizontalAlignment="Stretch" Grid.Column="1" d:LayoutOverrides="TopPosition, BottomPosition" BorderThickness="0" MinHeight="110" MinWidth="125" MaxWidth="250" MaxHeight="300">
+            <Button x:Name="btnTemp" Margin="0" VerticalAlignment="Stretch" Foreground="White" Background="#FF68217A" FontWeight="Bold" BorderBrush="{x:Null}" Click="btnTemp_Click" HorizontalAlignment="Stretch" Grid.Column="1" d:LayoutOverrides="TopPosition, BottomPosition" BorderThickness="0" MinHeight="110" MinWidth="125" MaxWidth="250" MaxHeight="300">
                 <TextBlock TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="0" FontSize="13">Initializing Temperature Reading</TextBlock>
             </Button>
             <Button x:Name="btnPressure" VerticalAlignment="Stretch" Foreground="White" Background="#FF68217A" FontWeight="Bold" BorderBrush="{x:Null}" Click="btnPressure_Click" HorizontalAlignment="Stretch" Grid.Row="1" BorderThickness="0" MinHeight="110" MinWidth="125" MaxWidth="250" MaxHeight="300">

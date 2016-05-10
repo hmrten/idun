@@ -36,6 +36,8 @@ namespace TestInterface
             this.InitializeComponent();
             keyboard.RegisterTarget(textBoxNote);
             keyboard.RegisterTarget(MaxServiceNr);
+
+    
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

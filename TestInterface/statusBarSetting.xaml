@@ -19,6 +19,6 @@
         <Button x:Name="btnBACK" Content="Return" Margin="680,10,0,0" VerticalAlignment="Top" Width="110" Height="124" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnBACK_Click" ClickMode="Press"/>
         <Button x:Name="btnSave" Content="Save" Margin="565,9,0,0" VerticalAlignment="Top" Width="110" Height="125" Foreground="White" Background="#FF68217A" FontWeight="Bold" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" BorderBrush="{x:Null}" Click="btnSave_Click"/>
 
-        <oks:OnScreenKeyBoard x:Name="keyboard" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="212" Margin="4,0,4,-32" Width="792" />
+        <oks:OnScreenKeyBoard x:Name="keyboard" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="212" Margin="4,0,4,-32" Width="792"/>
     </Grid>
 </Page>
